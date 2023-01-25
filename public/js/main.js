@@ -1,1 +1,3 @@
-$(document).on('click', '#loginValidation')
+$(document).on('click', '#loginValidation', function(e){
+  
+})

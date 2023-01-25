@@ -8,6 +8,10 @@
   --color-lgreen: #0a8b5c;
 }
 
+.logo-card{
+  width: 400px;
+}
+
 .btn{
   color: var(--color-text);
   font-weight: 700;
@@ -21,14 +25,25 @@
   color: var(--color-text);
 }
 
-.card-form{
-  padding: 5vh;
-  background-color: rgba(0, 0, 0, 0.5); /* cor de fundo translúcida */
-  height: 100%;
-  border-radius: 0px;
+body {
+  background-image: linear-gradient(to right, var(--color-purple), var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green), var(--color-lgreen));
+}
+
+.form-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .card-login{
-  margin: 0px;
-  height: 100vh;
+  width: 90vh;
+  text-align: center;
+}
+
+.card-form{
+  padding: 5vh;
+  background-color: rgba(0, 0, 0, 0.5); /* cor de fundo translúcida */
+  border-radius: 15px; /* arredondar as bordas */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* adicionar sombra */
 }
