@@ -5,7 +5,7 @@ const path = require("path");
 const server = http.createServer(app);
 const { requisicoes } = require("./function/requisicoes");
 
-const port = 8001;
+const port = 2469;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -19,5 +19,5 @@ app.get("/", (req, res) => {
 requisicoes(app);
 
 server.listen(port, () => {
-  console.log(`Servidor web em: http://localhost:${port}`);
+  console.log(`Servidor web em: http://192.168.25.109:${port}`);
 });

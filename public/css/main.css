@@ -1,0 +1,36 @@
+:root{
+  --color-text: #fff;
+  --color-purple: #370c69;
+  --color-bblue: #2c2866;
+  --color-blue: #234563;
+  --color-bgreen: #195f61;
+  --color-green: #146f5f;
+  --color-lgreen: #0a8b5c;
+}
+
+*{
+  color: var(--color-text);
+}
+
+body {
+  background-image: linear-gradient(to right, var(--color-purple), var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green), var(--color-lgreen));
+}
+
+.form-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-login{
+  width: 90vh;
+  text-align: center;
+}
+
+.card-form{
+  padding: 2vh;
+  background-color: rgba(0, 0, 0, 0.5); /* cor de fundo translúcida */
+  border-radius: 15px; /* arredondar as bordas */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* adicionar sombra */
+}
