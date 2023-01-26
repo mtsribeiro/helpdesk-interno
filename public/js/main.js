@@ -5,6 +5,7 @@
 */
 
 $(document).on('click', '#loginValidation', function(e){
+  e.preventDefault();
   var email = $('#emailForm').val()
   var pass = $('#passwordForm').val()
 

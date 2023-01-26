@@ -64,7 +64,7 @@ $(document).on('click', '#AbreTicket', function (e) {
 });
 
 async function dashboard() {
-  await $.ajax({
+  $.ajax({
     url : "/DashboardBackEnd",
     type : 'post',
     data: {Situacao: 0},
@@ -94,7 +94,7 @@ async function dashboard() {
     }
   })
 
-  await $.ajax({
+  $.ajax({
     url : "/DashboardDev",
     type : 'post',
     data: {Situacao: 1},
@@ -124,7 +124,7 @@ async function dashboard() {
     }
   })
 
-  await $.ajax({
+  $.ajax({
     url : "/DashboardTeste",
     type : 'post',
     data: {Situacao: 2},
@@ -154,7 +154,7 @@ async function dashboard() {
     }
   })
 
-  await $.ajax({
+  $.ajax({
     url : "/DashboardFinalizado",
     type : 'post',
     data: {Situacao: 3},
