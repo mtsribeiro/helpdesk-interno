@@ -22,17 +22,28 @@
             <fieldset>
               <div class="form-group mb-3">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" id="emailForm" aria-describedby="emailHelp" placeholder="Enter email">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="passwordForm" placeholder="Password">
               </div>
             </fieldset>
           </form>
           <button class="btn btn-success mt-3" id="loginValidation">Login</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2600">
+      <div class="toast-header">
+        <strong class="me-auto">Aviso</strong>
+        <small>Agora</small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="msg-text"></div>
     </div>
   </div>
 </body>

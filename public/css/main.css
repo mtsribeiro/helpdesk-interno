@@ -6,6 +6,22 @@
   --color-bgreen: #195f61;
   --color-green: #146f5f;
   --color-lgreen: #0a8b5c;
+  --color-red: #ff666694;
+  --color-red-hover: #ff6666;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #05452E;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #086A47;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid  #05452E;  /* creates padding around scroll thumb */
 }
 
 .logo-card{
@@ -43,11 +59,45 @@ body {
 
 .card-form{
   padding: 5vh;
-  background-color: rgba(0, 0, 0, 0.5); /* cor de fundo translúcida */
+  background-color: #00000080; /* cor de fundo translúcida */
   border-radius: 15px; /* arredondar as bordas */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* adicionar sombra */
+  box-shadow: 0px 0px 20px #00000080; /* adicionar sombra */
 }
+
+.toast, .navbar, .dropdown-menu, .card{
+  background-color: #00000080 !important;
+  box-shadow: 0px 0px 20px #00000080;
+  --bs-dropdown-bg: #00000080 !important;
+  --bs-dropdown-link-color: var(--bs-navbar-color) !important;
+}
+
+.toast-header{
+  background-color: transparent
+}
+
 .logo-card{
   width: 40vh;
   margin-right: 1vh;
+}
+
+#DeslogaUser{
+  color: var(--color-red);
+}
+
+#DeslogaUser:hover{
+  color: var(--color-red-hover);
+}
+
+.card-backlog{
+  background-color: #2b2b2b !important;
+  border-radius: 15px;
+  text-align: center;
+  padding: 1vh;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.card-backlog:hover{
+  background-color: #000000 !important;
+  transform: scale(1.02);
 }
