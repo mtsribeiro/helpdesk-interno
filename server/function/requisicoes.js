@@ -58,6 +58,14 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/SelecionaTicket", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Tks.IdTicket = ${req.body.id}`
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {

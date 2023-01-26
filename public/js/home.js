@@ -84,7 +84,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-backlog').append(`<div class="card-backlog mb-3">
+        $('#tks-backlog').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -114,7 +114,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-dev').append(`<div class="card-backlog mb-3">
+        $('#tks-dev').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -144,7 +144,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-teste').append(`<div class="card-backlog mb-3">
+        $('#tks-teste').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -174,13 +174,43 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-finalizado').append(`<div class="card-backlog mb-3">
+        $('#tks-finalizado').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
         <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
       </div>`)
       });
+    }
+  })
+}
+
+function OpenTicket(id) {
+  $('#TicketRef').text('REF# '+id)
+
+  $.ajax({
+    url : "/SelecionaTicket",
+    type : 'post',
+    data: {id: id},
+    success: function (response) {
+      $('#tks-finalizado').html('')
+        if(response[0].Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint' + response[0].Sprint
+        }
+
+        if(response[0].Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(response[0].Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (response[0].Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#CategoriaTicketSelecionado').val(response[0].Categoria_desc)
+        $('#UrgenciaTicketSelecionado').val(urgencia)
+        $('#AssuntoTicketSelecionado').val(response[0].Assunto)
+        $('#DescricaoTicketSelecionado').val(response[0].Descricao)
     }
   })
 }
