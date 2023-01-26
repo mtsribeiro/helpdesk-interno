@@ -64,7 +64,7 @@ body {
   box-shadow: 0px 0px 20px #00000080; /* adicionar sombra */
 }
 
-.toast, .navbar, .dropdown-menu, .card{
+.toast, .navbar, .dropdown-menu, .card, .modal-content{
   background-color: #00000080 !important;
   box-shadow: 0px 0px 20px #00000080;
   --bs-dropdown-bg: #00000080 !important;
@@ -100,4 +100,12 @@ body {
 .card-backlog:hover{
   background-color: #000000 !important;
   transform: scale(1.02);
+}
+
+.modal-footer{
+  border-top: 1px solid #363636 !important;
+}
+
+.modal-header{
+  border-bottom: 1px solid #363636 !important;
 }
