@@ -18,6 +18,46 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/InsereTicket", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `INSERT INTO mov_Ticket SET ?`, req.body
+    );
+    res.send(resultado);
+  });
+
+  app.post("/DashboardBackEnd", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/DashboardDev", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/DashboardTeste", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/DashboardFinalizado", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {

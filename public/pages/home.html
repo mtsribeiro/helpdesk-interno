@@ -66,7 +66,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleSelect1">Urgência</label>
-                    <select class="form-select" id="exampleSelect1">
+                    <select class="form-select" id="UrgenciaTicket">
                       <option value="1" style="color: #000">Alta</option>
                       <option value="2" style="color: #000">Média</option>
                       <option value="3" style="color: #000">Baixa</option>
@@ -78,7 +78,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Assunto</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" id="AssuntoTicket" aria-describedby="emailHelp" placeholder="Assunto...">
                   </div>
                 </div>
               </div>
@@ -86,7 +86,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label for="exampleTextarea">Descrição</label>
-                    <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Escreva aqui..."></textarea>
+                    <textarea class="form-control" id="DescricaoTicket" rows="3" placeholder="Escreva aqui..."></textarea>
                   </div>
                 </div>
               </div>
@@ -95,9 +95,20 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success w-100" data-bs-dismiss="modal">Enviar 🚀</button>
+          <button type="button" id="AbreTicket" class="btn btn-success w-100" data-bs-dismiss="modal">Enviar 🚀</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2600">
+      <div class="toast-header">
+        <strong class="me-auto">Aviso</strong>
+        <small>Agora</small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="msg-text"></div>
     </div>
   </div>
 
