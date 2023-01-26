@@ -45,8 +45,18 @@ if(!localStorage.getItem("infologin") && pageHome != '/'){
 
 if (localStorage.getItem("infologin")) {
   var infoUser = JSON.parse(localStorage.getItem("infologin"));
+  if(infoUser[0].admin == 1) {
+    $('#btn-admin').css(`display`, 'block')
+  }
+  else if(infoUser[0].admin == 0 && pageHome == '/admin'){
+    window.location.href = '/home';
+  }
   $(document).on('click', '#DeslogaUser', function(e){
     localStorage.removeItem("infologin");
     window.location.href = "/";
   })
 }
+
+$(document).on('click', '#btn-admin', function(e){
+  $('#btn-admin').addClass('active');  
+})

@@ -11,7 +11,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand">
         <img src="../image/RS LOGO CURTA.png" alt="" style="width: 4vh;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" id="menu-dashboard" href="#">Dashboard</a>
+            <a class="nav-link" id="menu-dashboard" href="/home">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Aprovação</a>
@@ -29,7 +29,7 @@
             <a class="nav-link" href="#">Finalizado</a>
           </li>
           <li class="nav-item" id="btn-admin">
-            <a class="nav-link" id="btn-admin" href="/admin">Administrador</a>
+            <a class="nav-link active" id="btn-admin" href="/admin">Administrador</a>
           </li>         
         </ul>
         <form class="d-flex">
@@ -42,67 +42,9 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-    <button class="btn btn-warning w-100 mt-3" style="font-weight: bold;" data-bs-toggle="modal" data-bs-target="#OpenNewTicket">Abrir ticket😅</button>
-  </div>
 
-  <section class="vh-100 gradient-custom" id="dashboard"></section>
 
-  <div class="modal fade" id="OpenNewTicket" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="OpenNewTicketLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Abertura ticket</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <fieldset>
-              <div class="row mb-2">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">Categoria</label>
-                    <select class="form-select" id="CategoriaTicket">
-                    </select>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">Urgência</label>
-                    <select class="form-select" id="UrgenciaTicket">
-                      <option value="1" style="color: #000">Alta</option>
-                      <option value="2" style="color: #000">Média</option>
-                      <option value="3" style="color: #000">Baixa</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Assunto</label>
-                    <input type="email" class="form-control" id="AssuntoTicket" aria-describedby="emailHelp" placeholder="Assunto...">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleTextarea">Descrição</label>
-                    <textarea class="form-control" id="DescricaoTicket" rows="3" placeholder="Escreva aqui..."></textarea>
-                  </div>
-                </div>
-              </div>
-             
-            </fieldset>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="AbreTicket" class="btn btn-success w-100" data-bs-dismiss="modal">Enviar 🚀</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <section class="vh-100 gradient-custom" id="dashboard-admin"></section>
 
   <div class="modal fade" id="OpenTicket" data-bs-keyboard="false" tabindex="-1" aria-labelledby="OpenTicketLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

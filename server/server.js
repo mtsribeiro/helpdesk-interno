@@ -20,6 +20,10 @@ app.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/pages/home.html"));
 });
 
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/pages/admin.html"));
+});
+
 requisicoes(app);
 
 server.listen(port, () => {

@@ -212,7 +212,7 @@ function OpenTicket(id) {
         $('#AssuntoTicketSelecionado').val(response[0].Assunto)
         $('#DescricaoTicketSelecionado').val(response[0].Descricao)
         $('#SprintTicketSelecionado').val(sprint)
-        $('#SolucaoTicketSelecionado').val(response[0].Solucao)
+        $('#SolucaoTicketSelecionado').val(response[0].Soluca)
     }
   })
 }
