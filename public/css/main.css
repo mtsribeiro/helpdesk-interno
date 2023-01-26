@@ -47,3 +47,7 @@ body {
   border-radius: 15px; /* arredondar as bordas */
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* adicionar sombra */
 }
+logo-card{
+  width: 40vh;
+  margin-right: 1vh;
+}
