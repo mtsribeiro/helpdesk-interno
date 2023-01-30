@@ -90,6 +90,22 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/ListaUsuarios", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `Select * from cad_usuario`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/ListaCategorias", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `Select * from cad_categoria`
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {

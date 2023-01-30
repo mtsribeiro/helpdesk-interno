@@ -287,3 +287,40 @@ $(document).on('click', '#InsereColaborador', function(e){
     }
   })
 })
+
+$(document).on('click', '#listaTodosCadastro',function(e){
+  $('#listUsers').html('')
+  $('#listCategory').html('')
+  listaCadastro()
+})
+
+function listaCadastro(e) {
+  $.ajax({
+    url : "/ListaUsuarios",
+    type : 'post',
+    success: function (response) {
+      response.forEach(element => {
+        $('#listUsers').append(`<div class="col-6 mt-3">
+        <div class="card-backlog p-2">
+          <span class="badge rounded-pill bg-secondary">${element.nome} ${element.sobrenome}</span>
+          <small>${element.email}</small>
+        </div>
+      </div>`)
+      });
+    }
+  })
+
+  $.ajax({
+    url : "/ListaCategorias",
+    type : 'post',
+    success: function (response) {
+      response.forEach(element => {
+        $('#listCategory').append(`<div class="col-6 mt-3">
+        <div class="card-backlog p-2">
+          <small>${element.Descricao}</small>
+        </div>
+      </div>`)
+      });
+    }
+  })
+}

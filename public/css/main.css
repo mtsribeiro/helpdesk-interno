@@ -82,7 +82,7 @@ body {
 }
 
 .card-backlog{
-  background-color: #bdbdbd !important;
+  background-color: #e2e2e2 !important;
   border-radius: 15px;
   text-align: center;
   padding: 1vh;
@@ -90,7 +90,15 @@ body {
   transition: all 0.3s;
 }
 
+.card-sias{
+  background-color: #ffffff88 !important;
+}
+
 .card-backlog:hover{
-  background-color: #ffffff !important;
+  background-color: #ccc !important;
   transform: scale(1.02);
+}
+
+.offcanvas{
+  --bs-offcanvas-width: 65vh !important;
 }

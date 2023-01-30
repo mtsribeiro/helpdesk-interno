@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="../image/RS LOGO CURTA.png">
+  <link rel="icon" type="image/png" href="../image/RS LOGO CURTA BRANCA.png">
   <title>Administrador</title>
 </head>
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../assets/bootstrap.min.css">
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
       <a class="navbar-brand">
         <img src="../image/RS LOGO CURTA.png" alt="" style="width: 4vh;">
@@ -49,10 +49,10 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <button class="btn btn-primary w-100 mt-3" data-bs-toggle="offcanvas" data-bs-target="#listaCadastro" aria-controls="offcanvasExample">Lista de cadastros 👥</button>
+          <button class="btn btn-warning w-100 mt-3" data-bs-toggle="offcanvas" id="listaTodosCadastro" data-bs-target="#listaCadastro" aria-controls="offcanvasExample">Lista de cadastros 👥</button>
         </div>
         <div class="col-6">
-          <button class="btn btn-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ScreenCad">Novo cadastro 📑</button>
+          <button class="btn btn-warning w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ScreenCad">Novo cadastro 📑</button>
         </div>
       </div>
     </div>
@@ -61,22 +61,25 @@
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="listaCadastro" aria-labelledby="listaCadastroLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cadastros</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <div>
-        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-      </div>
-      <div class="dropdown mt-3">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" data-bs-toggle="tab" href="#ListUsuarios" aria-selected="true" role="tab">Cadastro de usuários</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-bs-toggle="tab" href="#ListCategoria" aria-selected="false" role="tab" tabindex="-1">Cadastro de categoria</a>
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active show" id="ListUsuarios" role="tabpanel">
+          <div class="row" id="listUsers"></div>
+        </div>
+        <div class="tab-pane fade" id="ListCategoria" role="tabpanel">
+          <div class="row" id="listCategory"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -241,12 +244,11 @@
       <div class="toast-header">
         <strong class="me-auto">Aviso</strong>
         <small>Agora</small>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body" id="msg-text"></div>
     </div>
   </div>
-
 
 </body>
 <script src="../assets/bootstrap.bundle.min.js"></script>
