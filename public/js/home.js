@@ -17,6 +17,7 @@ $(document).ready(function (e) {
     success: function (response) {
       response.forEach(element => {
         $('#CategoriaTicket').append(`<option value="${element.idCategoria}" style="color: #000">${element.Descricao}</option>`)
+        $('#CategoriaTicketSelecionado').append(`<option value="${element.idCategoria}" style="color: #000">${element.Descricao}</option>`)
       });
     }
   })
@@ -74,7 +75,7 @@ async function dashboard() {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
         } else {
-          var sprint = 'Sprint' + element.Sprint
+          var sprint = 'Sprint ' + element.Sprint
         }
 
         if(element.Urgencia == 1) {
@@ -104,7 +105,7 @@ async function dashboard() {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
         } else {
-          var sprint = 'Sprint' + element.Sprint
+          var sprint = 'Sprint ' + element.Sprint
         }
 
         if(element.Urgencia == 1) {
@@ -134,7 +135,7 @@ async function dashboard() {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
         } else {
-          var sprint = 'Sprint' + element.Sprint
+          var sprint = 'Sprint ' + element.Sprint
         }
 
         if(element.Urgencia == 1) {
@@ -164,7 +165,7 @@ async function dashboard() {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
         } else {
-          var sprint = 'Sprint' + element.Sprint
+          var sprint = 'Sprint ' + element.Sprint
         }
 
         if(element.Urgencia == 1) {
@@ -193,26 +194,45 @@ function OpenTicket(id) {
     type : 'post',
     data: {id: id},
     success: function (response) {
-      $('#tks-finalizado').html('')
-        if(response[0].Sprint == 0){
-          var sprint = 'Sprint a definir'
-        } else {
-          var sprint = 'Sprint' + response[0].Sprint
-        }
-
-        if(response[0].Urgencia == 1) {
-          var urgencia = 'Alta'
-        } else if(response[0].Urgencia == 2) {
-          var urgencia = 'Média'
-        } else if (response[0].Urgencia == 3) {
-          var urgencia = 'Baixa'
-        }
-        $('#CategoriaTicketSelecionado').val(response[0].Categoria_desc)
-        $('#UrgenciaTicketSelecionado').val(urgencia)
+        $('#CategoriaTicketSelecionado').val(response[0].Categoria)
+        $('#UrgenciaTicketSelecionado').val(response[0].Urgencia)
         $('#AssuntoTicketSelecionado').val(response[0].Assunto)
         $('#DescricaoTicketSelecionado').val(response[0].Descricao)
-        $('#SprintTicketSelecionado').val(sprint)
-        $('#SolucaoTicketSelecionado').val(response[0].Soluca)
+        $('#SprintTicketSelecionado').val(response[0].Sprint)
+        $('#SolucaoTicketSelecionado').val(response[0].Solucao)
+        $('#SituacaoTicketSelecionado').val(response[0].Situacao)
+
+        $(document).on('click', '#btn-updateSia', function(e){
+          var id = response[0].idTicket
+          var categoriaDesc = $('#CategoriaTicketSelecionado').val()
+          var urgenciaDesc = $('#UrgenciaTicketSelecionado').val()
+          var assuntoDesc = $('#AssuntoTicketSelecionado').val()
+          var situacaoDesc = $('#SituacaoTicketSelecionado').val()
+          var descricaoDesc = $('#DescricaoTicketSelecionado').val()
+          var sprintDesc = $('#SprintTicketSelecionado').val()
+          var solucaoDesc = $('#SolucaoTicketSelecionado').val()
+
+          $.ajax({
+            url : "/updateSia",
+            type : 'post',
+            data: {idTicket: id,
+                   Categoria: categoriaDesc,
+                   Urgencia: urgenciaDesc,
+                   Assunto: assuntoDesc,
+                   Descricao: descricaoDesc,
+                   Sprint: sprintDesc,
+                   Solucao: solucaoDesc,
+                   Situacao: situacaoDesc},
+            success: function (response) {        
+              $("#msg-text").text("Ticket salvo! 🖥️");
+                $(".toast").toast("show");
+                setTimeout(() => {
+                  $("#msg-text").text("");
+                }, 3000);
+                dashboard()
+            }
+          })
+        })
     }
   })
 }
@@ -225,7 +245,6 @@ $(document).on('click', '#InsereCategoria', function(e){
     data: {Descricao: descricao},
     success: function (response) {
       $('#DescricaoForm').val('')
-
       $("#msg-text").text("Categoria cadastrado 🖥️");
         $(".toast").toast("show");
         setTimeout(() => {

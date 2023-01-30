@@ -82,6 +82,14 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/updateSia", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `UPDATE mov_Ticket SET ? WHERE idTicket = ${req.body.idTicket}`, req.body
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {

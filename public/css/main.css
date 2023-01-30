@@ -64,11 +64,17 @@ body {
   box-shadow: 0px 0px 20px #00000080; /* adicionar sombra */
 }
 
-.toast, .navbar, .dropdown-menu, .card, .modal-content{
+.toast, .navbar, .dropdown-menu, .card{
   background-color: #00000080 !important;
   box-shadow: 0px 0px 20px #00000080;
-  --bs-dropdown-bg: #00000080 !important;
   --bs-dropdown-link-color: var(--bs-navbar-color) !important;
+}
+
+.modal-content{
+  background-color: #202024 !important;
+  box-shadow: 0px 0px 20px #00000080;
+  /* --bs-dropdown-bg: #000000 !important;
+  --bs-dropdown-link-color: var(--bs-navbar-color) !important; */
 }
 
 .toast-header{
