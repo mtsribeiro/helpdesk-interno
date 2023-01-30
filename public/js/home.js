@@ -244,6 +244,7 @@ $(document).on('click', '#InsereCategoria', function(e){
     type : 'post',
     data: {Descricao: descricao},
     success: function (response) {
+      listaCadastro()
       $('#DescricaoForm').val('')
       $("#msg-text").text("Categoria cadastrado 🖥️");
         $(".toast").toast("show");
@@ -274,6 +275,7 @@ $(document).on('click', '#InsereColaborador', function(e){
            ativo: 1,
            admin: admin},
     success: function (response) {
+      listaCadastro()
       $('#nomeNewColab').val('')
       $('#sobrenomeNewColab').val('')
       $('#emailNewColab').val('')
