@@ -216,3 +216,55 @@ function OpenTicket(id) {
     }
   })
 }
+
+$(document).on('click', '#InsereCategoria', function(e){
+  var descricao = $('#DescricaoForm').val()
+  $.ajax({
+    url : "/InsereCategoria",
+    type : 'post',
+    data: {Descricao: descricao},
+    success: function (response) {
+      $('#DescricaoForm').val('')
+
+      $("#msg-text").text("Categoria cadastrado 🖥️");
+        $(".toast").toast("show");
+        setTimeout(() => {
+          $("#msg-text").text("");
+        }, 3000);
+    }
+  })
+})
+
+$(document).on('click', '#InsereColaborador', function(e){
+  var admin = 0
+  if($('#AdminNewColab').prop("checked")) {
+    admin = 1
+  }
+  var nome = $('#nomeNewColab').val()
+  var sobrenome = $('#sobrenomeNewColab').val()
+  var email = $('#emailNewColab').val()
+  var senha = $('#senhaNewColab').val()
+
+  $.ajax({
+    url : "/InsereUsuario",
+    type : 'post',
+    data: {nome: nome,
+           sobrenome: sobrenome,
+           email: email,
+           senha: senha,
+           ativo: 1,
+           admin: admin},
+    success: function (response) {
+      $('#nomeNewColab').val('')
+      $('#sobrenomeNewColab').val('')
+      $('#emailNewColab').val('')
+      $('#senhaNewColab').val('')
+
+      $("#msg-text").text("Usuario cadastrado 🖥️");
+        $(".toast").toast("show");
+        setTimeout(() => {
+          $("#msg-text").text("");
+        }, 3000);
+    }
+  })
+})

@@ -59,6 +59,22 @@ const requisicoes = async (app) => {
     res.send(resultado);
   });
 
+  app.post("/InsereCategoria", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `INSERT INTO cad_categoria SET ?`, req.body
+    );
+    res.send(resultado);
+  });
+
+  app.post("/InsereUsuario", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `INSERT INTO cad_usuario SET ?`, req.body
+    );
+    res.send(resultado);
+  });
+
   app.post("/SelecionaTicket", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(

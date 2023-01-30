@@ -56,7 +56,3 @@ if (localStorage.getItem("infologin")) {
     window.location.href = "/";
   })
 }
-
-$(document).on('click', '#btn-admin', function(e){
-  $('#btn-admin').addClass('active');  
-})
