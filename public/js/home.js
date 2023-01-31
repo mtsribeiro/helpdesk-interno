@@ -187,6 +187,47 @@ async function dashboard() {
       });
     }
   })
+
+  var idusuario = $('#idUserlogado').val()
+  $.ajax({
+    url : "/DashboardAprovacao",
+    type : 'post',
+    data: {id: idusuario},
+    success: function (response) {
+      $('#tks-aprovacao').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#tks-aprovacao').append(`<div class="card mb-3" onClick="RetornoTicket(${element.idTicket})">
+        <div class="row card-body">
+        <div class="col-4">
+          <span class="badge bg-success">${element.Categoria_desc}</span>
+          <span class="badge bg-warning">${sprint}</span>
+          <span class="badge bg-danger">${urgencia}</span>
+          <h5 style="margin-top: 1vh; margin-bottom: 1vh">${element.Assunto}</h5>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-success">Aprovado</button>
+              <button class="btn btn-danger">Reprovado</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-4" style="border-left: 1px solid #ccc;">${element.Descricao}</div>
+        <div class="col-4" style="border-left: 1px solid #ccc;">${element.Solucao}</div>`)
+      });
+    }
+  })
 }
 
 function OpenTicket(id) {

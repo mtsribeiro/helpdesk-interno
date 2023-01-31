@@ -154,6 +154,14 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/DashboardAprovacao", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria where idUsuarioCriacao = ${req.body.id} and Situacao = 2`
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {
