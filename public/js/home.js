@@ -25,20 +25,20 @@ $(document).ready(function (e) {
 });
 
 $(document).on('click', '#AbreTicket', function (e) {
-  location.reload('./dashboard.html');
+  
   var categoria = $('#CategoriaTicket').val()
   var urgencia = $('#UrgenciaTicket').val()
   var assunto = $('#AssuntoTicket').val()
   var descricao = $('#DescricaoTicket').val()
+  var idUsuario = $('#idUserlogado').val()
 
   if (!categoria || !urgencia || !assunto || !descricao) {
-    ("#msg-text").text("Necessário preencher todas as informações 🖥️");
+        $("#msg-text").text("Necessário preencher todas as informações 🖥️");
         $(".toast").toast("show");
         setTimeout(() => {
           $("#msg-text").text("");
     }, 3000);
   } else {
-    dashboard()
     $.ajax({
       url : "/InsereTicket",
       type : 'post',
@@ -46,6 +46,7 @@ $(document).on('click', '#AbreTicket', function (e) {
              Urgencia: urgencia,
              Assunto: assunto,
              Descricao: descricao,
+             idUsuarioCriacao: idUsuario,
              Sprint: 0,
              Solucao: '',
              Situacao: 0},
@@ -54,6 +55,7 @@ $(document).on('click', '#AbreTicket', function (e) {
         $('#UrgenciaTicket').val('')
         $('#AssuntoTicket').val('')
         $('#DescricaoTicket').val('')
+        dashboard()
   
         $("#msg-text").text("Ticket enviado ao time de TI 🖥️");
           $(".toast").toast("show");
@@ -528,5 +530,4 @@ function EditaUsuario(id){
 
     }
   })
-
 }
