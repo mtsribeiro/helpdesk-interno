@@ -88,7 +88,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-backlog').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-backlog').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -118,7 +118,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-dev').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-dev').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -148,7 +148,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-teste').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-teste').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -178,7 +178,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-finalizado').append(`<div class="card-backlog mb-3" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-finalizado').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -209,7 +209,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-aprovacao').append(`<div class="card mb-3" onClick="RetornoTicket(${element.idTicket})">
+        $('#tks-aprovacao').append(`<div class="card mb-3 animate__animated animate__fadeInDown">
         <div class="row card-body">
         <div class="col-4">
           <span class="badge bg-success">${element.Categoria_desc}</span>
@@ -348,7 +348,7 @@ function listaCadastro(e) {
     success: function (response) {
       $('#listUsers').html('')
       response.forEach(element => {
-        $('#listUsers').append(`<div class="col-6 mt-3">
+        $('#listUsers').append(`<div class="col-6 mt-3 animate__animated animate__fadeInDown">
         <div class="card-backlog p-2" onclick="EditaUsuario(${element.Idusuario})">
           <span class="badge rounded-pill bg-secondary">${element.nome} ${element.sobrenome}</span>
           <small>${element.email}</small>
@@ -365,7 +365,7 @@ function listaCadastro(e) {
       $('#listCategory').html('')
       response.forEach(element => {
         $('#listCategory').append(`
-        <div class="col-6 mt-3">
+        <div class="col-6 mt-3 animate__animated animate__fadeInDown">
         <div class="card-backlog p-2" onclick="EditaCategoria(${element.idCategoria})">
           <small>${element.Descricao}</small>
         </div>
