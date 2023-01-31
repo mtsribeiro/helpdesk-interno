@@ -425,6 +425,7 @@ function EditaUsuario(id){
       $("#salvaUsuario").removeAttr("disabled");
 
       $(document).on('click', '#salvaUsuario', function(e){
+        e.preventDefault();
         var nome = $('#NomeEditacolab').val()
         var sobrenome = $('#SobrenomeEditacolab').val()
         var email = $('#EmailEditacolab').val()
