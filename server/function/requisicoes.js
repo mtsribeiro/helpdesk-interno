@@ -106,6 +106,30 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/ListaCategoriaEspecifica", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `Select * from cad_categoria where IdCategoria = ${req.body.idCategoria}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/UpdateCategoriaEspecifica", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `UPDATE cad_categoria SET Descricao = '${req.body.Descricao}' where IdCategoria = ${req.body.idCategoria}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/DeletaCategoriaEspecifica", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `DELETE FROM cad_categoria where IdCategoria = ${req.body.idCategoria}`
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {

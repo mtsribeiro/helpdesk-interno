@@ -238,12 +238,14 @@ function OpenTicket(id) {
 }
 
 $(document).on('click', '#InsereCategoria', function(e){
+  e.preventDefault();
   var descricao = $('#DescricaoForm').val()
   $.ajax({
     url : "/InsereCategoria",
     type : 'post',
     data: {Descricao: descricao},
     success: function (response) {
+
       listaCadastro()
       $('#DescricaoForm').val('')
       $("#msg-text").text("Categoria cadastrado 🖥️");
@@ -292,7 +294,6 @@ $(document).on('click', '#InsereColaborador', function(e){
 
 $(document).on('click', '#listaTodosCadastro',function(e){
   $('#listUsers').html('')
-  $('#listCategory').html('')
   listaCadastro()
 })
 
@@ -301,6 +302,7 @@ function listaCadastro(e) {
     url : "/ListaUsuarios",
     type : 'post',
     success: function (response) {
+      $('#listUsers').html('')
       response.forEach(element => {
         $('#listUsers').append(`<div class="col-6 mt-3">
         <div class="card-backlog p-2">
@@ -316,13 +318,68 @@ function listaCadastro(e) {
     url : "/ListaCategorias",
     type : 'post',
     success: function (response) {
+      $('#listCategory').html('')
       response.forEach(element => {
-        $('#listCategory').append(`<div class="col-6 mt-3">
-        <div class="card-backlog p-2">
+        $('#listCategory').append(`
+        <div class="col-6 mt-3">
+        <div class="card-backlog p-2" onclick="EditaCategoria(${element.idCategoria})">
           <small>${element.Descricao}</small>
         </div>
       </div>`)
       });
+    }
+  })
+}
+
+function EditaCategoria(id){
+  $.ajax({
+    url : "/ListaCategoriaEspecifica",
+    data: {idCategoria: id},
+    type : 'post',
+    success: function (response) {
+      $('#DescricaoEditaCategoria').val(response[0].Descricao)
+      $("#deletaCategoria").removeAttr("disabled");
+      $("#DescricaoEditaCategoria").removeAttr("disabled");
+      $("#salvaCategoria").removeAttr("disabled");
+
+      $(document).on('click', '#salvaCategoria', function(e){
+        var descricao = $('#DescricaoEditaCategoria').val()
+        $.ajax({
+          url : "/UpdateCategoriaEspecifica",
+          data: {idCategoria: id,
+                 Descricao: descricao},
+          type : 'post',
+          success: function (response) {
+            $('#DescricaoEditaCategoria').val('')
+            $("#deletaCategoria").attr("disabled", "disabled");
+            $("#DescricaoEditaCategoria").attr("disabled", "disabled");
+            $("#salvaCategoria").attr("disabled", "disabled");
+            listaCadastro()
+          }
+        })
+      })
+
+      $(document).on('click', '#btn-DeletaCategoria', function(e){
+        $.ajax({
+          url : "/DeletaCategoriaEspecifica",
+          data: {idCategoria: id},
+          type : 'post',
+          success: function (response) {
+            $('#DescricaoEditaCategoria').val('')
+            $("#deletaCategoria").attr("disabled", "disabled");
+            $("#DescricaoEditaCategoria").attr("disabled", "disabled");
+            $("#salvaCategoria").attr("disabled", "disabled");
+            listaCadastro()
+          }
+        })
+      })
+      $(document).on('click', '#btn-DeletarCancela', function(e){
+            $('#DescricaoEditaCategoria').val('')
+            $("#deletaCategoria").attr("disabled", "disabled");
+            $("#DescricaoEditaCategoria").attr("disabled", "disabled");
+            $("#salvaCategoria").attr("disabled", "disabled");
+            listaCadastro()
+      })
     }
   })
 }

@@ -48,11 +48,8 @@
   <section class="vh-100 gradient-custom" id="dashboard-admin">
     <div class="container">
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <button class="btn btn-warning w-100 mt-3" data-bs-toggle="offcanvas" id="listaTodosCadastro" data-bs-target="#listaCadastro" aria-controls="offcanvasExample">Lista de cadastros 👥</button>
-        </div>
-        <div class="col-6">
-          <button class="btn btn-warning w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ScreenCad">Novo cadastro 📑</button>
         </div>
       </div>
     </div>
@@ -74,11 +71,25 @@
         </li>
       </ul>
       <div id="myTabContent" class="tab-content">
+        <button class="btn btn-warning w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ScreenCad">Novo cadastro 📑</button>
         <div class="tab-pane fade active show" id="ListUsuarios" role="tabpanel">
           <div class="row" id="listUsers"></div>
         </div>
         <div class="tab-pane fade" id="ListCategoria" role="tabpanel">
           <div class="row" id="listCategory"></div>
+          <div class="row">
+            <div class="col-12">
+              <hr>
+              <div class="row">
+                <div class="col-12" style="text-align: end;">
+                  <button class="btn btn-danger" id="deletaCategoria" data-bs-toggle="modal" data-bs-target="#DeleteCategoria" disabled>Deletar 🗑️</button>
+                </div>
+              </div>
+              <label for="exampleInputEmail1">Descrição</label>
+              <input type="text" class="form-control" id="DescricaoEditaCategoria" placeholder="Descrição..." disabled>
+              <button class="btn btn-success mt-3 w-100" id="salvaCategoria" disabled>Salvar 🚀</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -161,6 +172,24 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-success w-100" data-bs-dismiss="modal" id="btn-updateSia">Salvar 🚀</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="DeleteCategoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteCategoriaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Deletar categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Deseja deletar a categoria selecionada?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-bs-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" id="btn-DeletaCategoria">Deletar</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" id="btn-DeletarCancela">Cancelar</button>
         </div>
       </div>
     </div>
