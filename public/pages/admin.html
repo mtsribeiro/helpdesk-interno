@@ -74,6 +74,52 @@
         <button class="btn btn-warning w-100 mt-3" data-bs-toggle="modal" data-bs-target="#ScreenCad">Novo cadastro 📑</button>
         <div class="tab-pane fade active show" id="ListUsuarios" role="tabpanel">
           <div class="row" id="listUsers"></div>
+          <div class="row">
+            <div class="col-12">
+              <hr>
+              <div class="row">
+                <div class="col-12" style="text-align: end;">
+                  <button class="btn btn-danger" id="deletaUsuario" data-bs-toggle="modal" data-bs-target="#DeleteUsuario" disabled>Deletar 🗑️</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label for="exampleInputEmail1">Nome</label>
+                  <input type="text" class="form-control" id="NomeEditacolab" placeholder="Nome..." disabled>
+                </div>
+                <div class="col-6">
+                  <label for="exampleInputEmail1">Sobrenome</label>
+                  <input type="text" class="form-control" id="SobrenomeEditacolab" placeholder="Sobrenome..." disabled>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-6">
+                  <label for="exampleInputEmail1">E-mail</label>
+                  <input type="text" class="form-control" id="EmailEditacolab" placeholder="E-mail..." disabled>
+                </div>
+                <div class="col-6">
+                  <label for="exampleInputEmail1">Senha</label>
+                  <input type="text" class="form-control" id="SenhaEditacolab" placeholder="Senha..." disabled>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 mt-2">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="AdminEditacolab" disabled>
+                    <label class="form-check-label" for="AdminEditacolab">Administrador</label>
+                  </div>
+                </div>
+                <div class="col-6 mt-2">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="AtivoEditacolab" disabled>
+                    <label class="form-check-label" for="AtivoEditacolab">Ativo</label>
+                  </div>
+                </div>
+              </div>
+              
+              <button class="btn btn-success mt-3 w-100" id="salvaUsuario" disabled>Salvar 🚀</button>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade" id="ListCategoria" role="tabpanel">
           <div class="row" id="listCategory"></div>
@@ -195,6 +241,24 @@
     </div>
   </div>
 
+  <div class="modal fade" id="DeleteUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Deletar usuário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Deseja deletar o usuário selecionado?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-bs-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" id="btn-DeletaUsuario">Deletar</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" id="btn-DeletarUserCancela">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="ScreenCad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ScreenCadLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -268,7 +332,7 @@
     </div>
   </div>
 
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 2000">
     <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2600">
       <div class="toast-header">
         <strong class="me-auto">Aviso</strong>

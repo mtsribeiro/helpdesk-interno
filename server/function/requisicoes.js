@@ -94,7 +94,7 @@ const requisicoes = async (app) => {
   app.post("/ListaUsuarios", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
-      `Select * from cad_usuario`
+      `Select * from cad_usuario order By ativo Desc`
     );
     res.send(resultado);
   });
@@ -123,10 +123,34 @@ const requisicoes = async (app) => {
     res.send(resultado);
   });
 
+  app.post("/UpdateUsuarioEspecifica", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `UPDATE cad_usuario SET ? where Idusuario = ${req.body.Idusuario}`, req.body
+    );
+    res.send(resultado);
+  });
+
   app.post("/DeletaCategoriaEspecifica", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
       `DELETE FROM cad_categoria where IdCategoria = ${req.body.idCategoria}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/ListaUsuarioEspecifico", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `Select * from cad_usuario where Idusuario = ${req.body.id}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/DeletaUsuarioEspecifico", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `DELETE FROM cad_usuario where Idusuario = ${req.body.id}`
     );
     res.send(resultado);
   });
