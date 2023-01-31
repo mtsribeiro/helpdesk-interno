@@ -21,18 +21,18 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" id="menu-dashboard" href="#">Dashboard</a>
+            <a class="nav-link" id="menu-dashboard" href="/home">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/aprovacao">Aprovação</a>
+            <a class="nav-link active" href="/aprovacao">Aprovação</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Finalizado</a>
           </li>
           <li class="nav-item" id="btn-admin">
             <a class="nav-link" id="btn-admin" href="/admin">Administrador</a>
-          </li>  
-          <input type="text" id="idUserlogado" style="display: none;" disabled>       
+          </li>
+          <input type="text" id="idUserlogado" style="display: none;" disabled>         
         </ul>
         <form class="d-flex">
           <ul class="navbar-nav me-auto">
@@ -44,11 +44,8 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-    <button class="btn btn-warning w-100 mt-3" data-bs-toggle="modal" data-bs-target="#OpenNewTicket">Abrir ticket😅</button>
-  </div>
 
-  <section class="vh-100 gradient-custom" id="dashboard"></section>
+  <section class="vh-100 gradient-custom" id="aprovacao-dashboard"></section>
 
   <div class="modal fade" id="OpenNewTicket" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="OpenNewTicketLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

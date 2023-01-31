@@ -45,6 +45,8 @@ if(!localStorage.getItem("infologin") && pageHome != '/'){
 
 if (localStorage.getItem("infologin")) {
   var infoUser = JSON.parse(localStorage.getItem("infologin"));
+  $('#idUserlogado').val(infoUser[0].Idusuario)
+
   if(infoUser[0].admin == 1) {
     $('#btn-admin').css(`display`, 'block')
   }

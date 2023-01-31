@@ -1,5 +1,6 @@
 carregamentoStatico("./pages/dashboard.html", "#dashboard");
 carregamentoStatico("./pages/home.html", "#ProfileLogado");
+carregamentoStatico("./pages/dashboard-aprovacao.html", "#aprovacao-dashboard");
 
 function carregamentoStatico(arquivo, local) {
   fetch(arquivo)

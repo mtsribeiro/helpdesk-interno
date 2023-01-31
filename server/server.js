@@ -24,6 +24,10 @@ app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/pages/admin.html"));
 });
 
+app.get("/aprovacao", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/pages/aprovacao.html"));
+});
+
 requisicoes(app);
 
 server.listen(port, () => {
