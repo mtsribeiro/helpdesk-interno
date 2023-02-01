@@ -1,6 +1,5 @@
 :root{
   --color-text: #000;
-  --color-purple: #370c69;
   --color-bblue: #2c2866;
   --color-blue: #234563;
   --color-bgreen: #195f61;
@@ -24,17 +23,20 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid  #05452E;  /* creates padding around scroll thumb */
 }
 
-.logo-card{
-  width: 400px;
+
+.button-login{
+  background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green));
+  width: 65vh;
+  border-radius: 15px;
+  border: none;
+  color: #fff;
+  font-size: 14pt;
+  transition: all 0.3s;
 }
 
-.btn{
-  color: var(--color-text);
-  font-weight: 700;
-}
-
-.btn:hover{
-  background-color: var(--color-green);
+.button-login:hover{
+  color: #fff;
+  transform: scale(1.02);
 }
 
 *{
@@ -42,7 +44,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
-  background-image: linear-gradient(to right, var(--color-purple), var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green), var(--color-lgreen));
+  background-image: url('../image/sea-background.jpg');
+  /* background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green)); */
+  background-size: cover;
+  background-position: center center;
 }
 
 .form-login{
@@ -50,6 +55,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.form-login input {
+  background-color: #ffffffb4;
+  border-radius: 15px;
+  border: none;
+  padding: 1.5vh;
 }
 
 .card-login{
@@ -69,8 +81,8 @@ body {
 }
 
 .logo-card{
-  width: 40vh;
-  margin-right: 1vh;
+  width: 61vh;
+  margin-bottom: 5vh;
 }
 
 #DeslogaUser{
