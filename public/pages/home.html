@@ -27,9 +27,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/aprovacao">Aprovação</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Finalizado</a>
-          </li>
+          </li> -->
           <li class="nav-item" id="btn-admin">
             <a class="nav-link" id="btn-admin" href="/admin">Administrador</a>
           </li>  
@@ -121,14 +121,19 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleSelect1">Categoria</label>
-                    <input type="text" class="form-control" id="CategoriaTicketSelecionado" disabled>
+                    <select class="form-select" id="CategoriaTicketSelecionado" disabled>
+                    </select>
                     </select>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleSelect1">Urgência</label>
-                    <input type="text" class="form-control" id="UrgenciaTicketSelecionado" disabled>
+                    <select class="form-select" id="UrgenciaTicketSelecionado" disabled>
+                      <option value="1" style="color: #000">Alta</option>
+                      <option value="2" style="color: #000">Média</option>
+                      <option value="3" style="color: #000">Baixa</option>
+                    </select>
                   </div>
                 </div>
               </div>

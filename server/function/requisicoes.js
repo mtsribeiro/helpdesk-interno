@@ -162,6 +162,22 @@ const requisicoes = async (app) => {
     );
     res.send(resultado);
   });
+
+  app.post("/UpdateTicketCancelado", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `UPDATE mov_Ticket SET motivoCancelamento = '${req.body.motivoCancelamento}', situacao = 1 WHERE idTicket = ${req.body.id}`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/UpdateTicketAprovado", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `UPDATE mov_Ticket SET situacao = 3 WHERE idTicket = ${req.body.id}`
+    );
+    res.send(resultado);
+  });
 };
 
 module.exports = {

@@ -218,8 +218,8 @@ async function dashboard() {
           <h5 style="margin-top: 1vh; margin-bottom: 1vh">${element.Assunto}</h5>
           <div class="row">
             <div class="col-12">
-              <button class="btn btn-success">Aprovado</button>
-              <button class="btn btn-danger">Reprovado</button>
+              <button class="btn btn-success" onClick="BtnAprovaTicket(${element.idTicket})">Aprovado</button>
+              <button class="btn btn-danger" onClick="BtnEnviaCancelamento(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenMotivoCancelamento">Reprovado</button>
             </div>
           </div>
         </div>
@@ -238,12 +238,20 @@ function OpenTicket(id) {
     type : 'post',
     data: {id: id},
     success: function (response) {
+      if(response[0].Urgencia == 1){
+        var urgencia = 'Alta'
+      } else if (response[0].Urgencia == 2){
+        var urgencia = 'Média'
+      } else if (response[0].Urgencia == 3){
+        var urgencia = 'Baixa'
+      }
         $('#CategoriaTicketSelecionado').val(response[0].Categoria)
         $('#UrgenciaTicketSelecionado').val(response[0].Urgencia)
         $('#AssuntoTicketSelecionado').val(response[0].Assunto)
         $('#DescricaoTicketSelecionado').val(response[0].Descricao)
         $('#SprintTicketSelecionado').val(response[0].Sprint)
         $('#SolucaoTicketSelecionado').val(response[0].Solucao)
+        $('#MotivoCancelamentoTicketSelecionado').val(response[0].motivoCancelamento)
         $('#SituacaoTicketSelecionado').val(response[0].Situacao)
 
         $(document).on('click', '#btn-updateSia', function(e){
@@ -255,6 +263,7 @@ function OpenTicket(id) {
           var descricaoDesc = $('#DescricaoTicketSelecionado').val()
           var sprintDesc = $('#SprintTicketSelecionado').val()
           var solucaoDesc = $('#SolucaoTicketSelecionado').val()
+          var motivoDesc = $('#MotivoCancelamentoTicketSelecionado').val()
 
           $.ajax({
             url : "/updateSia",
@@ -266,7 +275,8 @@ function OpenTicket(id) {
                    Descricao: descricaoDesc,
                    Sprint: sprintDesc,
                    Solucao: solucaoDesc,
-                   Situacao: situacaoDesc},
+                   Situacao: situacaoDesc,
+                   motivoCancelamento: motivoDesc},
             success: function (response) {        
               $("#msg-text").text("Ticket salvo! 🖥️");
                 $(".toast").toast("show");
@@ -569,6 +579,44 @@ function EditaUsuario(id){
             listaCadastro()
       })
 
+    }
+  })
+}
+
+function BtnEnviaCancelamento(id){
+  $(document).on('click', '#UpdateStatusCancelado', function(e){
+    var motivoCancelamento = $('#MotivoCancelamentoDesc').val()
+    $.ajax({
+      url : "/UpdateTicketCancelado",
+      data: {id: id,
+             motivoCancelamento: motivoCancelamento},
+      type : 'post',
+      success: function (response) {
+        $('#MotivoCancelamentoDesc').val('')
+        dashboard()
+        $("#msg-text").text("Ticket reprovado 🖥️");
+        $(".toast").toast("show");
+        setTimeout(() => {
+          $("#msg-text").text("");
+        }, 3000);
+      }
+    })
+  })
+}
+
+function BtnAprovaTicket(id){
+  console.log('teste');
+  $.ajax({
+    url : "/UpdateTicketAprovado",
+    data: {id: id},
+    type : 'post',
+    success: function (response) {
+      dashboard()
+      $("#msg-text").text("Ticket aprovado 🖥️");
+      $(".toast").toast("show");
+      setTimeout(() => {
+        $("#msg-text").text("");
+      }, 3000);
     }
   })
 }
