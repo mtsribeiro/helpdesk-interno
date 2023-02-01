@@ -605,7 +605,6 @@ function BtnEnviaCancelamento(id){
 }
 
 function BtnAprovaTicket(id){
-  console.log('teste');
   $.ajax({
     url : "/UpdateTicketAprovado",
     data: {id: id},

@@ -25,7 +25,7 @@ body::-webkit-scrollbar-thumb {
 
 
 .button-login{
-  background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green));
+  background-image: linear-gradient(to right, var(--color-bgreen), var(--color-lgreen));
   width: 65vh;
   border-radius: 15px;
   border: none;
@@ -44,7 +44,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
-  background-image: url('../image/sea-background.jpg');
+  background-image: url('../image/sea-background.png');
   /* background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green)); */
   background-size: cover;
   background-position: center center;
