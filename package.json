@@ -20,6 +20,8 @@
   "homepage": "https://github.com/mtsribeiro/helpdesk-interno#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.20",
     "promise-mysql": "^5.2.0"
   }

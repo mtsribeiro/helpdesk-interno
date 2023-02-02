@@ -96,27 +96,18 @@
                   </div>
                 </div>
               </div>
-              <div id="draggable">Arraste-me</div>
-              <div id="droppable">Solte-me aqui</div>
-              
-              <script>
-              $( "#draggable" ).draggable({
-                revert: "invalid"
-              });
-              $( "#droppable" ).droppable({
-                drop: function( event, ui ) {
-                  $( this )
-                    .addClass( "ui-state-highlight" )
-                    .find( "p" )
-                      .html( "Solto!" );
-                }
-              });
-              </script>          
+              <div class="row mb-2">
+                <div class="col-12">
+                  <div class="form-group">
+                    <input class="form-control" type="file" name="anexos[]" id="AnexosTicket" multiple/>
+                  </div>
+                </div>
+              </div>
             </fieldset>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" id="AbreTicket" class="btn btn-success w-100" data-bs-dismiss="modal">Enviar 🚀</button>
+          <button type="button" id="AbreTicket" class="btn-EnviaArq btn btn-success w-100" data-bs-dismiss="modal" >Enviar 🚀</button>
         </div>
       </div>
     </div>

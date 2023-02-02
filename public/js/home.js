@@ -33,6 +33,7 @@ $(document).on('click', '#AbreTicket', function (e) {
   var idUsuario = $('#idUserlogado').val()
 
   if (!categoria || !urgencia || !assunto || !descricao) {
+        $('#AnexosTicket').val('')
         $("#msg-text").text("Necessário preencher todas as informações 🖥️");
         $(".toast").toast("show");
         setTimeout(() => {
@@ -51,6 +52,7 @@ $(document).on('click', '#AbreTicket', function (e) {
              Solucao: '',
              Situacao: 0},
       success: function (response) {
+        $('#AnexosTicket').val('')
         $('#CategoriaTicket').val('')
         $('#UrgenciaTicket').val('')
         $('#AssuntoTicket').val('')
@@ -64,6 +66,20 @@ $(document).on('click', '#AbreTicket', function (e) {
           }, 3000);
       }
     })
+      var formData = new FormData();
+      var arquivos = $("#AnexosTicket")[0].files;
+      for (var i = 0; i < arquivos.length; i++) {
+        formData.append('files', arquivos[i]);
+      }
+    
+      $.ajax({
+        url: '/enviarArquivos',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false
+      });
+
   }
 });
 
@@ -619,16 +635,3 @@ function BtnAprovaTicket(id){
     }
   })
 }
-
-$(document).on('click', '#btn-anexaItem', function(e){
-  var attachments = [];
-  $('#inputGroupFile01').click()
-
-  var newAttachment = $("#inputGroupFile01").val();
-  attachments.push(newAttachment);
-
-  $("#ContainerAnexos").empty();
-  for (var i = 0; i < attachments.length; i++) {
-    $("#ContainerAnexos").append("<div>" + attachments[i] + "</div>");
-  }
-})

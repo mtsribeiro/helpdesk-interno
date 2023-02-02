@@ -1,6 +1,6 @@
 const { getConnection } = require("../database/database");
 
-const requisicoes = async (app) => {
+const requisicoes = async (app, upload) => {
   app.post("/ChecaLogin", async function (req, res) {
     var email = req.body.email;
     var senha = req.body.password;
@@ -177,9 +177,19 @@ const requisicoes = async (app) => {
       `UPDATE mov_Ticket SET situacao = 3 WHERE idTicket = ${req.body.id}`
     );
     res.send(resultado);
+  })
+  
+  app.post('/enviarArquivos', upload.array("files", 10), async function (req, res) {
+    let conn = await getConnection();
+    var arquivos = req.files
+    arquivos.forEach(async element => {
+      await conn.query(`INSERT INTO arq_Arquivos (descricao, idTicket, caminho) VALUES ('${element.originalname}',0,'uploads/${element.originalname}');`)
+    });
+    res.send('Enviado com sucesso');
   });
-};
+  
+}
 
 module.exports = {
-  requisicoes,
-};
+  requisicoes
+}
