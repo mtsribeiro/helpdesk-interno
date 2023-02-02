@@ -5,8 +5,8 @@
   --color-bgreen: #195f61;
   --color-green: #146f5f;
   --color-lgreen: #0a8b5c;
-  --color-red: #ff666694;
-  --color-red-hover: #ff6666;
+  --color-red: #ff0000b2;
+  --color-red-hover: #ff0000;
 }
 
 body::-webkit-scrollbar {
@@ -44,7 +44,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
-  background-image: url('../image/sea-background.png');
+  background-image: url('../image/sea-background.jpg');
   /* background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green)); */
   background-size: cover;
   background-position: center center;
@@ -113,4 +113,8 @@ body {
 
 .offcanvas{
   --bs-offcanvas-width: 65vh !important;
+}
+
+.navbar{
+  background-color: #ffffff80;
 }

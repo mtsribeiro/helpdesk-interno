@@ -10,9 +10,8 @@
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../assets/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/animate.min.css">
-<link rel="stylesheet" href="../css/button.css">
 <body>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar sticky-top navbar-expand-lg bg-light navbar-light">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="../image/RS LOGO CURTA.png" alt="" style="width: 4vh;">
@@ -47,7 +46,7 @@
     </div>
   </nav>
   <div class="container">
-    <button class="fill w-100 mt-3" data-bs-toggle="modal" data-bs-target="#OpenNewTicket" style="text-transform: uppercase;">Abrir ticket</button>
+    <button class="btn btn-success w-100 mt-3" data-bs-toggle="modal" data-bs-target="#OpenNewTicket" style="text-transform: uppercase;">Abrir ticket</button>
   </div>
 
   <section class="vh-100 gradient-custom" id="dashboard"></section>
@@ -89,7 +88,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row mb-2">
                 <div class="col-12">
                   <div class="form-group">
                     <label for="exampleTextarea">Descrição</label>
@@ -97,7 +96,22 @@
                   </div>
                 </div>
               </div>
-             
+              <div id="draggable">Arraste-me</div>
+              <div id="droppable">Solte-me aqui</div>
+              
+              <script>
+              $( "#draggable" ).draggable({
+                revert: "invalid"
+              });
+              $( "#droppable" ).droppable({
+                drop: function( event, ui ) {
+                  $( this )
+                    .addClass( "ui-state-highlight" )
+                    .find( "p" )
+                      .html( "Solto!" );
+                }
+              });
+              </script>          
             </fieldset>
           </form>
         </div>
@@ -195,4 +209,5 @@
 <script src="../assets/jquery-3.6.3.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/home.js"></script>
+<script src="../assets/jquery-ui-git.js"></script>
 </html>

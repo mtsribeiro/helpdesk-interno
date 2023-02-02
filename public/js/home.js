@@ -619,3 +619,16 @@ function BtnAprovaTicket(id){
     }
   })
 }
+
+$(document).on('click', '#btn-anexaItem', function(e){
+  var attachments = [];
+  $('#inputGroupFile01').click()
+
+  var newAttachment = $("#inputGroupFile01").val();
+  attachments.push(newAttachment);
+
+  $("#ContainerAnexos").empty();
+  for (var i = 0; i < attachments.length; i++) {
+    $("#ContainerAnexos").append("<div>" + attachments[i] + "</div>");
+  }
+})
