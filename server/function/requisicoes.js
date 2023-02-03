@@ -187,6 +187,22 @@ const requisicoes = async (app, upload) => {
     });
     res.send('Enviado com sucesso');
   });
+
+  app.post("/PegaUltimoTicket", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria order by Tks.IdTicket desc limit 1`
+    );
+    res.send(resultado);
+  });
+
+  app.post("/UpdateArquivosTicket", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `UPDATE arq_Arquivos SET idTicket = ${req.body.id} Where idTicket = 0`
+    );
+    res.send(resultado);
+  });
   
 }
 

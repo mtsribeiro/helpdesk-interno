@@ -77,7 +77,16 @@ $(document).on('click', '#AbreTicket', function (e) {
         type: 'POST',
         data: formData,
         processData: false,
-        contentType: false
+        contentType: false,
+        success: function(response){
+          $.ajax({
+            url: '/PegaUltimoTicket',
+            type: 'POST',
+            success: function(response){
+              UpdateArquivosTicket(response[0].idTicket)
+            }
+          });
+        }
       });
 
   }
@@ -634,4 +643,15 @@ function BtnAprovaTicket(id){
       }, 3000);
     }
   })
+}
+
+function UpdateArquivosTicket(id){
+  $.ajax({
+    url: '/UpdateArquivosTicket',
+    type: 'POST',
+    data: {id: id},
+    success: function(response){
+      console.log('veja lá');
+    }
+  });
 }
