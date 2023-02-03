@@ -182,7 +182,6 @@ const requisicoes = async (app, upload) => {
   app.post('/enviarArquivos', upload.array("files", 10), async function (req, res) {
     let conn = await getConnection();
     var arquivos = req.files
-    console.log('inseriu');
     arquivos.forEach(async element => {
       await conn.query(`INSERT INTO arq_Arquivos (descricao, idTicket, caminho) VALUES ('${element.originalname}',0,'uploads/${element.originalname}');`)
     });
