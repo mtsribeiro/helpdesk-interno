@@ -69,7 +69,12 @@ $(document).on('click', '#AbreTicket', function (e) {
       var formData = new FormData();
       var arquivos = $("#AnexosTicket")[0].files;
       for (var i = 0; i < arquivos.length; i++) {
+        var tamanhoFile = arquivos[i].size;
+        if (tamanhoFile > 100000) {
+          return;
+        }
         formData.append('files', arquivos[i]);
+        
       }
     
       $.ajax({

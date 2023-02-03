@@ -50,6 +50,9 @@ if (localStorage.getItem("infologin")) {
   if(infoUser[0].admin == 1) {
     $('#btn-admin').css(`display`, 'block')
   }
+  else if(infoUser[0].admin == 0){
+    $('#btn-admin').css(`display`, 'none')
+  }
   else if(infoUser[0].admin == 0 && pageHome == '/admin'){
     window.location.href = '/home';
   }
