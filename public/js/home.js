@@ -278,6 +278,17 @@ function OpenTicket(id) {
         $('#SolucaoTicketSelecionado').val(response[0].Solucao)
         $('#MotivoCancelamentoTicketSelecionado').val(response[0].motivoCancelamento)
         $('#SituacaoTicketSelecionado').val(response[0].Situacao)
+        $.ajax({
+          url: '/selecionaArquivosTicket',
+          type: 'POST',
+          data: {id: id},
+          success: function (response){
+            $('#AnexosTicket').html('')
+            response.forEach(element => {
+              $('#AnexosTicket').append(`<a class="link-primary" href='${element.caminho}' download>${element.descricao}</a><br>`)
+            });
+          }
+        })
 
         $(document).on('click', '#btn-updateSia', function(e){
           var id = response[0].idTicket

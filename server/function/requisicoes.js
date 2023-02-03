@@ -203,6 +203,14 @@ const requisicoes = async (app, upload) => {
     );
     res.send(resultado);
   });
+
+  app.post("/selecionaArquivosTicket", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT * FROM arq_Arquivos WHERE idTicket = ${req.body.id}`
+    );
+    res.send(resultado);
+  });
   
 }
 
