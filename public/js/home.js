@@ -665,9 +665,6 @@ function UpdateArquivosTicket(id){
   $.ajax({
     url: '/UpdateArquivosTicket',
     type: 'POST',
-    data: {id: id},
-    success: function(response){
-      console.log('veja lá');
-    }
+    data: {id: id}
   });
 }
