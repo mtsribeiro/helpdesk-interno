@@ -53,8 +53,8 @@ $(document).on('click', '#AbreTicket', function (e) {
              Situacao: 0},
       success: function (response) {
         $('#AnexosTicket').val('')
-        $('#CategoriaTicket').val('')
-        $('#UrgenciaTicket').val('')
+        $('#CategoriaTicket').val(2)
+        $('#UrgenciaTicket').val(3)
         $('#AssuntoTicket').val('')
         $('#DescricaoTicket').val('')
         dashboard()
