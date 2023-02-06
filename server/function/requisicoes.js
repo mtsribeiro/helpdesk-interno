@@ -1,5 +1,18 @@
 const { getConnection } = require("../database/database");
 
+function getWeek() {
+  let date = new Date();
+  let firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+  let dayOfWeek = firstDayOfYear.getDay();
+  let spendDays = 1;
+  if (dayOfWeek != 0) {
+    spendDays = 7 - dayOfWeek + 1;
+  }
+  let firstMondayOfYear = new Date(date.getFullYear(), 0, 1 + spendDays);
+  let d = Math.floor((date.valueOf() - firstMondayOfYear.valueOf()) / 86400000);
+  return Math.ceil((d + firstMondayOfYear.getDay() + 1) / 7);
+}
+
 const requisicoes = async (app, upload) => {
   app.post("/ChecaLogin", async function (req, res) {
     var email = req.body.email;
@@ -172,9 +185,10 @@ const requisicoes = async (app, upload) => {
   });
 
   app.post("/UpdateTicketAprovado", async function (req, res) {
+    var semanaAtual = getWeek()
     let conn = await getConnection();
     const resultado = await conn.query(
-      `UPDATE mov_Ticket SET situacao = 3 WHERE idTicket = ${req.body.id}`
+      `UPDATE mov_Ticket SET situacao = 3 WHERE idTicket = ${req.body.id} and sprint = ${semanaAtual}`
     );
     res.send(resultado);
   })

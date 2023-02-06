@@ -11,6 +11,19 @@ function carregamentoStatico(arquivo, local) {
 }
 dashboard()
 
+function getWeek() {
+  let date = new Date();
+  let firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+  let dayOfWeek = firstDayOfYear.getDay();
+  let spendDays = 1;
+  if (dayOfWeek != 0) {
+    spendDays = 7 - dayOfWeek + 1;
+  }
+  let firstMondayOfYear = new Date(date.getFullYear(), 0, 1 + spendDays);
+  let d = Math.floor((date.valueOf() - firstMondayOfYear.valueOf()) / 86400000);
+  return Math.ceil((d + firstMondayOfYear.getDay() + 1) / 7);
+}
+
 $(document).ready(function (e) {
   $.ajax({
     url : "/BuscaCategoria",
@@ -279,7 +292,7 @@ function OpenTicket(id) {
         $('#UrgenciaTicketSelecionado').val(response[0].Urgencia)
         $('#AssuntoTicketSelecionado').val(response[0].Assunto)
         $('#DescricaoTicketSelecionado').val(response[0].Descricao)
-        $('#SprintTicketSelecionado').val(response[0].Sprint)
+        $("#SprintTicketSelecionado").attr("placeholder", 'Sprint atual: ' + getWeek());
         $('#SolucaoTicketSelecionado').val(response[0].Solucao)
         $('#MotivoCancelamentoTicketSelecionado').val(response[0].motivoCancelamento)
         $('#SituacaoTicketSelecionado').val(response[0].Situacao)

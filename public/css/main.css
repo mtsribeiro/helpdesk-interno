@@ -46,8 +46,9 @@ body::-webkit-scrollbar-thumb {
 body {
   background-image: url('../image/sea-background.jpg');
   /* background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green)); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
-  background-position: center center;
 }
 
 .form-login{
