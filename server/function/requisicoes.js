@@ -67,7 +67,7 @@ const requisicoes = async (app, upload) => {
   app.post("/DashboardFinalizado", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
-      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.sprint = ${getWeek()}`
     );
     res.send(resultado);
   });
