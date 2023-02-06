@@ -65,9 +65,10 @@ const requisicoes = async (app, upload) => {
   });
 
   app.post("/DashboardFinalizado", async function (req, res) {
+    var semanaAtual = getWeek()
     let conn = await getConnection();
     const resultado = await conn.query(
-      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.sprint = ${getWeek()}`
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.sprint = ${semanaAtual}`
     );
     res.send(resultado);
   });
@@ -185,10 +186,9 @@ const requisicoes = async (app, upload) => {
   });
 
   app.post("/UpdateTicketAprovado", async function (req, res) {
-    var semanaAtual = getWeek()
     let conn = await getConnection();
     const resultado = await conn.query(
-      `UPDATE mov_Ticket SET situacao = 3 WHERE idTicket = ${req.body.id} and sprint = ${semanaAtual}`
+      `UPDATE mov_Ticket SET situacao = 3 WHERE idTicket = ${req.body.id}`
     );
     res.send(resultado);
   })
