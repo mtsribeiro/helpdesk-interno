@@ -6,7 +6,7 @@ const server = http.createServer(app);
 var multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, __dirname, '/uploads')
+      cb(null, './uploads/')
   },
   filename: function (req, file, cb) {
       // Extração da extensão do arquivo original:
