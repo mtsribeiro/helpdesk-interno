@@ -49,5 +49,5 @@ app.get("/aprovacao", (req, res) => {
 requisicoes(app, upload);
 
 server.listen(port, () => {
-  console.log(`Servidor iniciado, porta: ${port}`);
+  console.log(`Servidor iniciado, link: http://localhost:${port}`);
 });
