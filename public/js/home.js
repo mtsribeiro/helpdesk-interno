@@ -289,7 +289,7 @@ function OpenTicket(id) {
         $('#SolucaoTicketSelecionado').val(response[0].Solucao)
         $('#MotivoCancelamentoTicketSelecionado').val(response[0].motivoCancelamento)
         $('#SituacaoTicketSelecionado').val(response[0].Situacao)
-        $('#text-sprint').text('Sprint atual: ',response[0].Sprint)
+        $('#text-sprint').text('Sprint atual: ' + response[0].Sprint)
         $.ajax({
           url: '/selecionaArquivosTicket',
           type: 'POST',
