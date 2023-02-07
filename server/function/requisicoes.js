@@ -118,7 +118,7 @@ const requisicoes = async (app, upload) => {
   app.post("/updateSia", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
-      `UPDATE mov_Ticket SET ? WHERE idTicket = ${req.body.idTicket}`, req.body
+      `UPDATE mov_Ticket SET Categoria = ${req.body.Categoria}, Urgencia = ${req.body.Urgencia}, Assunto = '${req.body.Assunto}', Descricao = '${req.body.Descricao}', Sprint = ${req.body.Sprint}, Solucao = '${req.body.Solucao}', Situacao = ${req.body.Situacao}, motivoCancelamento = '${req.body.motivoCancelamento}' WHERE idTicket = ${req.body.idTicket}`
     );
     res.send(resultado);
   });
