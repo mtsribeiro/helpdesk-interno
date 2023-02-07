@@ -281,21 +281,15 @@ function OpenTicket(id) {
     type : 'post',
     data: {id: id},
     success: function (response) {
-      if(response[0].Urgencia == 1){
-        var urgencia = 'Alta'
-      } else if (response[0].Urgencia == 2){
-        var urgencia = 'Média'
-      } else if (response[0].Urgencia == 3){
-        var urgencia = 'Baixa'
-      }
         $('#CategoriaTicketSelecionado').val(response[0].Categoria)
         $('#UrgenciaTicketSelecionado').val(response[0].Urgencia)
         $('#AssuntoTicketSelecionado').val(response[0].Assunto)
         $('#DescricaoTicketSelecionado').val(response[0].Descricao)
-        $("#SprintTicketSelecionado").attr("placeholder", 'Sprint atual: ' + getWeek());
+        $("#SprintTicketSelecionado").val(response[0].Sprint);
         $('#SolucaoTicketSelecionado').val(response[0].Solucao)
         $('#MotivoCancelamentoTicketSelecionado').val(response[0].motivoCancelamento)
         $('#SituacaoTicketSelecionado').val(response[0].Situacao)
+        $('#text-sprint').text('Sprint atual: ',response[0].Sprint)
         $.ajax({
           url: '/selecionaArquivosTicket',
           type: 'POST',

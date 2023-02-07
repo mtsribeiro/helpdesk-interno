@@ -120,9 +120,7 @@ const requisicoes = async (app, upload) => {
     const resultado = await conn.query(
       `UPDATE mov_Ticket SET ? WHERE idTicket = ${req.body.idTicket}`, req.body
     );
-    
     res.send(resultado);
-    
   });
 
   app.post("/ListaUsuarios", async function (req, res) {
