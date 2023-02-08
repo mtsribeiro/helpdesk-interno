@@ -47,6 +47,10 @@ body::-webkit-scrollbar-thumb {
   --bs-modal-width: 100vh !important;
 }
 
+.card{
+  --bs-card-border-color: transparent !important;
+}
+
 body {
   /* background-image: url('../image/sea-background.jpg'); */
   background-color: #fafafa;
