@@ -43,6 +43,10 @@ body::-webkit-scrollbar-thumb {
   color: var(--color-text);
 }
 
+.modal{
+  --bs-modal-width: 100vh !important;
+}
+
 body {
   background-image: url('../image/sea-background.jpg');
   /* background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green)); */
