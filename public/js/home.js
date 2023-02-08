@@ -281,6 +281,7 @@ function OpenTicket(id) {
     type : 'post',
     data: {id: id},
     success: function (response) {
+        $('#idTicketSelecionado').val(response[0].idTicket)
         $('#CategoriaTicketSelecionado').val(response[0].Categoria)
         $('#UrgenciaTicketSelecionado').val(response[0].Urgencia)
         $('#AssuntoTicketSelecionado').val(response[0].Assunto)
@@ -289,7 +290,7 @@ function OpenTicket(id) {
         $('#SolucaoTicketSelecionado').val(response[0].Solucao)
         $('#MotivoCancelamentoTicketSelecionado').val(response[0].motivoCancelamento)
         $('#SituacaoTicketSelecionado').val(response[0].Situacao)
-        $('#text-sprint').text('Sprint atual: ' + response[0].Sprint)
+        $('#text-sprint').text('Sprint atual: ' + getWeek())
         $.ajax({
           url: '/selecionaArquivosTicket',
           type: 'POST',
@@ -301,43 +302,44 @@ function OpenTicket(id) {
             });
           }
         })
-
-        $(document).on('click', '#btn-updateSia', function(e){
-          var id = response[0].idTicket
-          var categoriaDesc = $('#CategoriaTicketSelecionado').val()
-          var urgenciaDesc = $('#UrgenciaTicketSelecionado').val()
-          var assuntoDesc = $('#AssuntoTicketSelecionado').val()
-          var situacaoDesc = $('#SituacaoTicketSelecionado').val()
-          var descricaoDesc = $('#DescricaoTicketSelecionado').val()
-          var sprintDesc = $('#SprintTicketSelecionado').val()
-          var solucaoDesc = $('#SolucaoTicketSelecionado').val()
-          var motivoDesc = $('#MotivoCancelamentoTicketSelecionado').val()
-
-          $.ajax({
-            url : "/updateSia",
-            type : 'post',
-            data: {idTicket: id,
-                   Categoria: categoriaDesc,
-                   Urgencia: urgenciaDesc,
-                   Assunto: assuntoDesc,
-                   Descricao: descricaoDesc,
-                   Sprint: sprintDesc,
-                   Solucao: solucaoDesc,
-                   Situacao: situacaoDesc,
-                   motivoCancelamento: motivoDesc},
-            success: function (response) {        
-              $("#msg-text").text("Ticket salvo! 🖥️");
-                $(".toast").toast("show");
-                setTimeout(() => {
-                  $("#msg-text").text("");
-                }, 3000);
-                dashboard()
-            }
-          })
-        })
     }
   })
 }
+
+$(document).on('click', '#btn-updateSia', function(e){
+  e.preventDefault();
+  var id = $('#idTicketSelecionado').val()
+  var categoriaDesc = $('#CategoriaTicketSelecionado').val()
+  var urgenciaDesc = $('#UrgenciaTicketSelecionado').val()
+  var assuntoDesc = $('#AssuntoTicketSelecionado').val()
+  var situacaoDesc = $('#SituacaoTicketSelecionado').val()
+  var descricaoDesc = $('#DescricaoTicketSelecionado').val()
+  var sprintDesc = $('#SprintTicketSelecionado').val()
+  var solucaoDesc = $('#SolucaoTicketSelecionado').val()
+  var motivoDesc = $('#MotivoCancelamentoTicketSelecionado').val()
+
+  $.ajax({
+    url : "/updateSia",
+    type : 'post',
+    data: {idTicket: id,
+           Categoria: categoriaDesc,
+           Urgencia: urgenciaDesc,
+           Assunto: assuntoDesc,
+           Descricao: descricaoDesc,
+           Sprint: sprintDesc,
+           Solucao: solucaoDesc,
+           Situacao: situacaoDesc,
+           motivoCancelamento: motivoDesc},
+    success: function (response) {        
+      $("#msg-text").text("Ticket salvo! 🖥️");
+        $(".toast").toast("show");
+        dashboard()
+        setTimeout(() => {
+          $("#msg-text").text("");
+        }, 3000);
+    }
+  })
+})
 
 $(document).on('click', '#InsereCategoria', function(e){
   e.preventDefault();
