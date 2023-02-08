@@ -131,7 +131,37 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-backlog').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-backlog').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        <span class="badge bg-success">${element.Categoria_desc}</span>
+        <span class="badge bg-warning">${sprint}</span>
+        <span class="badge bg-danger">${urgencia}</span>
+        <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
+      </div>`)
+      });
+    }
+  })
+
+  $.ajax({
+    url : "/DashboardArquivado",
+    type : 'post',
+    data: {Situacao: 4},
+    success: function (response) {
+      $('#tks-Arquivado').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#tks-Arquivado').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -161,7 +191,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-dev').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-dev').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -191,7 +221,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-teste').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-teste').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -221,7 +251,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-finalizado').append(`<div class="card-backlog mb-3 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        $('#tks-finalizado').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
         <span class="badge bg-success">${element.Categoria_desc}</span>
         <span class="badge bg-warning">${sprint}</span>
         <span class="badge bg-danger">${urgencia}</span>
@@ -252,7 +282,7 @@ async function dashboard() {
         } else if (element.Urgencia == 3) {
           var urgencia = 'Baixa'
         }
-        $('#tks-aprovacao').append(`<div class="card mb-3 animate__animated animate__fadeInDown">
+        $('#tks-aprovacao').append(`<div class="card mt-2 mb-2 animate__animated animate__fadeInDown">
         <div class="row card-body">
         <div class="col-4">
           <span class="badge bg-success">${element.Categoria_desc}</span>

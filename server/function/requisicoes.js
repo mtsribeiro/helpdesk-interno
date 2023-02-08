@@ -85,6 +85,16 @@ const requisicoes = async (app, upload) => {
     
   });
 
+  app.post("/DashboardArquivado", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    
+    res.send(resultado);
+    
+  });
+
   app.post("/InsereCategoria", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(

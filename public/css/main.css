@@ -48,12 +48,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
-  background-image: url('../image/sea-background.jpg');
-  /* background-image: linear-gradient(to right, var(--color-bblue), var(--color-blue), var(--color-bgreen), var(--color-green)); */
+  /* background-image: url('../image/sea-background.jpg'); */
+  background-color: #fafafa;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  overflow-x: hidden;
 }
 
 .form-login{
@@ -100,7 +101,7 @@ body {
 }
 
 .card-backlog{
-  background-color: #e2e2e2 !important;
+  background-color: #fafafa !important;
   border-radius: 15px;
   text-align: center;
   padding: 1vh;
@@ -109,12 +110,11 @@ body {
 }
 
 .card-sias{
-  background-color: #ffffff88 !important;
+  background-color: #f2f2f2 !important;
 }
 
 .card-backlog:hover{
-  background-color: #ccc !important;
-  transform: scale(1.02);
+  transform: scale(1.02) !important;
 }
 
 .offcanvas{
