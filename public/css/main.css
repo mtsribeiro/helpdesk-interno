@@ -11,21 +11,6 @@
   --color-red-hover: #ff0000;
 }
 
-body::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
-}
-
-body::-webkit-scrollbar-track {
-  background: #05452E;        /* color of the tracking area */
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #086A47;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid  #05452E;  /* creates padding around scroll thumb */
-}
-
-
 .button-login{
   background-image: linear-gradient(to right, var(--color-bgreen), var(--color-lgreen));
   width: 65vh;
