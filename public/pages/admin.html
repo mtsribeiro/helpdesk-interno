@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../assets/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/animate.min.css">
+<link rel="stylesheet" href="../fonts/montserrat.css">
 <body>
-  <nav class="navbar sticky-top navbar-expand-lg" style="background-color: #fff;">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand">
         <img src="../image/RS LOGO CURTA.png" alt="" style="width: 4vh;">
@@ -45,15 +46,19 @@
       </div>
     </div>
   </nav>
-
-  <section class="vh-100 gradient-custom" id="dashboard-admin">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <button class="button-login w-100 mt-3" data-bs-toggle="offcanvas" id="listaTodosCadastro" data-bs-target="#listaCadastro" aria-controls="offcanvasExample">LISTA DE CADASTROS</button>
-        </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <button class="mt-3 btn btn-primary" data-bs-toggle="offcanvas" id="listaTodosCadastro" data-bs-target="#listaCadastro" aria-controls="offcanvasExample" style="font-weight: 600; border-radius: 50px;"><i class="bi bi-check-lg text-white"></i> Cadastros</button>
+      </div>
+      <div class="col-10">
+        <h4 class="mt-3 justify-content-center">Bem-vindo 👋</h4>
       </div>
     </div>
+  </div>
+
+  <section class="vh-100 gradient-custom" id="dashboard-admin">
     <section class="vh-100 gradient-custom" id="dashboard"></section>
   </section>
 

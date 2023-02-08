@@ -55,7 +55,7 @@ body::-webkit-scrollbar-thumb {
 
 body {
   /* background-image: url('../image/sea-background.jpg'); */
-  background-color: #fafafa;
+  background-color: #fafafa !important;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -76,6 +76,10 @@ body {
   border-radius: 15px;
   border: none;
   padding: 1.5vh;
+}
+
+.navbar{
+  background-color: #f1f1f1 !important;
 }
 
 .card-login{
@@ -117,11 +121,11 @@ body {
 }
 
 .card-sias{
-  background-color: #f2f2f2 !important;
+  background-color: #fff !important;
 }
 
 .card-backlog:hover{
-  transform: scale(1.02) !important;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
 }
 
 .offcanvas{
