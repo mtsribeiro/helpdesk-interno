@@ -1,4 +1,5 @@
 carregamentoStatico("./pages/dashboard.html", "#dashboard");
+carregamentoStatico("./pages/mydashboard.html", "#mydashboard");
 carregamentoStatico("./pages/home.html", "#ProfileLogado");
 carregamentoStatico("./pages/dashboard-aprovacao.html", "#aprovacao-dashboard");
 
@@ -111,11 +112,16 @@ $(document).on('click', '#AbreTicket', function (e) {
 });
 
 async function dashboard() {
+  var id = $('#idUserlogado').val()
   $.ajax({
     url : "/DashboardBackEnd",
     type : 'post',
     data: {Situacao: 0},
+    beforeSend: function(data) {
+      $(".loading-backlog").show();
+    },
     success: function (response) {
+      $(".loading-backlog").hide();
       $('#tks-backlog').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
@@ -142,10 +148,49 @@ async function dashboard() {
   })
 
   $.ajax({
+    url : "/myDashboardBackEnd",
+    type : 'post',
+    data: {Situacao: 0,
+           id: id},
+    beforeSend: function(data) {
+      $(".myloading-backlog").show();
+    },
+    success: function (response) {
+      $(".myloading-backlog").hide();
+      $('#mytks-backlog').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#mytks-backlog').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        <span class="badge bg-success">${element.Categoria_desc}</span>
+        <span class="badge bg-warning">${sprint}</span>
+        <span class="badge bg-danger">${urgencia}</span>
+        <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
+      </div>`)
+      });
+    }
+  })
+
+  $.ajax({
     url : "/DashboardArquivado",
     type : 'post',
     data: {Situacao: 4},
+    beforeSend: function(data) {
+      $(".loading-arquivado").show();
+    },
     success: function (response) {
+      $(".loading-arquivado").hide();
       $('#tks-Arquivado').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
@@ -172,10 +217,49 @@ async function dashboard() {
   })
 
   $.ajax({
+    url : "/myDashboardArquivado",
+    type : 'post',
+    data: {Situacao: 4,
+           id: id},
+    beforeSend: function(data) {
+      $(".myloading-arquivado").show();
+    },
+    success: function (response) {
+      $(".myloading-arquivado").hide();
+      $('#mytks-Arquivado').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#mytks-Arquivado').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        <span class="badge bg-success">${element.Categoria_desc}</span>
+        <span class="badge bg-warning">${sprint}</span>
+        <span class="badge bg-danger">${urgencia}</span>
+        <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
+      </div>`)
+      });
+    }
+  })
+
+  $.ajax({
     url : "/DashboardDev",
     type : 'post',
     data: {Situacao: 1},
+    beforeSend: function(data) {
+      $(".loading-dev").show();
+    },
     success: function (response) {
+      $(".loading-dev").hide();
       $('#tks-dev').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
@@ -202,10 +286,49 @@ async function dashboard() {
   })
 
   $.ajax({
+    url : "/myDashboardDev",
+    type : 'post',
+    data: {Situacao: 1,
+           id: id},
+    beforeSend: function(data) {
+      $(".myloading-dev").show();
+    },
+    success: function (response) {
+    $(".myloading-dev").hide();
+      $('#mytks-dev').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#mytks-dev').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        <span class="badge bg-success">${element.Categoria_desc}</span>
+        <span class="badge bg-warning">${sprint}</span>
+        <span class="badge bg-danger">${urgencia}</span>
+        <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
+      </div>`)
+      });
+    }
+  })
+
+  $.ajax({
     url : "/DashboardTeste",
     type : 'post',
     data: {Situacao: 2},
+    beforeSend: function(data) {
+      $(".loading-teste").show();
+    },
     success: function (response) {
+      $(".loading-teste").hide();
       $('#tks-teste').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
@@ -232,10 +355,49 @@ async function dashboard() {
   })
 
   $.ajax({
+    url : "/myDashboardTeste",
+    type : 'post',
+    data: {Situacao: 2,
+           id: id},
+    beforeSend: function(data) {
+      $(".myloading-teste").show();
+    },
+    success: function (response) {
+      $(".myloading-teste").hide();
+      $('#mytks-teste').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#mytks-teste').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        <span class="badge bg-success">${element.Categoria_desc}</span>
+        <span class="badge bg-warning">${sprint}</span>
+        <span class="badge bg-danger">${urgencia}</span>
+        <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
+      </div>`)
+      });
+    }
+  })
+
+  $.ajax({
     url : "/DashboardFinalizado",
     type : 'post',
     data: {Situacao: 3},
+    beforeSend: function(data) {
+      $(".loading-finalizado").show();
+    },
     success: function (response) {
+      $(".loading-finalizado").hide();
       $('#tks-finalizado').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
@@ -261,12 +423,50 @@ async function dashboard() {
     }
   })
 
-  var idusuario = $('#idUserlogado').val()
+  $.ajax({
+    url : "/myDashboardFinalizado",
+    type : 'post',
+    data: {Situacao: 3,
+           id: id},
+    beforeSend: function(data) {
+      $(".myloading-finalizado").show();
+    },
+    success: function (response) {
+      $(".myloading-finalizado").hide();
+      $('#mytks-finalizado').html('')
+      response.forEach(element => {
+        if(element.Sprint == 0){
+          var sprint = 'Sprint a definir'
+        } else {
+          var sprint = 'Sprint ' + element.Sprint
+        }
+
+        if(element.Urgencia == 1) {
+          var urgencia = 'Alta'
+        } else if(element.Urgencia == 2) {
+          var urgencia = 'Média'
+        } else if (element.Urgencia == 3) {
+          var urgencia = 'Baixa'
+        }
+        $('#mytks-finalizado').append(`<div class="card-backlog mt-2 mb-2 animate__animated animate__fadeInDown" onClick="OpenTicket(${element.idTicket})" data-bs-toggle="modal" data-bs-target="#OpenTicket">
+        <span class="badge bg-success">${element.Categoria_desc}</span>
+        <span class="badge bg-warning">${sprint}</span>
+        <span class="badge bg-danger">${urgencia}</span>
+        <h5 style="margin-top: 1vh;">${element.Assunto}</h5>
+      </div>`)
+      });
+    }
+  })
+
   $.ajax({
     url : "/DashboardAprovacao",
     type : 'post',
-    data: {id: idusuario},
+    data: {id: id},
+    beforeSend: function(data) {
+      $(".loading-aprovacao").show();
+    },
     success: function (response) {
+      $(".loading-aprovacao").hide();
       $('#tks-aprovacao').html('')
       response.forEach(element => {
         if(element.Sprint == 0){

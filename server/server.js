@@ -46,6 +46,10 @@ app.get("/aprovacao", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/pages/aprovacao.html"));
 });
 
+app.get("/mytickets", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/pages/myTickets.html"));
+});
+
 requisicoes(app, upload);
 
 server.listen(port, () => {

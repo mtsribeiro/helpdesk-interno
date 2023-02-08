@@ -54,6 +54,16 @@ const requisicoes = async (app, upload) => {
     
   });
 
+  app.post("/myDashboardBackEnd", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.idUsuarioCriacao = ${req.body.id}`
+    );
+    
+    res.send(resultado);
+    
+  });
+
   app.post("/DashboardDev", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
@@ -64,10 +74,30 @@ const requisicoes = async (app, upload) => {
     
   });
 
+  app.post("/myDashboardDev", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.idUsuarioCriacao = ${req.body.id}`
+    );
+    
+    res.send(resultado);
+    
+  });
+
   app.post("/DashboardTeste", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
       `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    
+    res.send(resultado);
+    
+  });
+
+  app.post("/myDashboardTeste", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.idUsuarioCriacao = ${req.body.id}`
     );
     
     res.send(resultado);
@@ -85,10 +115,31 @@ const requisicoes = async (app, upload) => {
     
   });
 
+  app.post("/myDashboardFinalizado", async function (req, res) {
+    var semanaAtual = getWeek()
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.sprint = ${semanaAtual} and Tks.idUsuarioCriacao = ${req.body.id}`
+    );
+    
+    res.send(resultado);
+    
+  });
+
   app.post("/DashboardArquivado", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
       `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao}`
+    );
+    
+    res.send(resultado);
+    
+  });
+
+  app.post("/myDashboardArquivado", async function (req, res) {
+    let conn = await getConnection();
+    const resultado = await conn.query(
+      `SELECT Tks.*, Ctg.Descricao as Categoria_desc FROM mov_Ticket Tks Join cad_categoria Ctg on Ctg.IdCategoria = Tks.Categoria WHERE Situacao = ${req.body.Situacao} and Tks.idUsuarioCriacao = ${req.body.id}`
     );
     
     res.send(resultado);
