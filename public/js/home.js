@@ -10,7 +10,11 @@ function carregamentoStatico(arquivo, local) {
       $(local).html(text);
     });
 }
+
 dashboard()
+setInterval(() => {
+  dashboard()
+}, 60000);
 
 function getWeek() {
   let date = new Date();
