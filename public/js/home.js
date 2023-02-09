@@ -680,47 +680,9 @@ function EditaCategoria(id){
       $("#DescricaoEditaCategoria").removeAttr("disabled");
       $("#salvaCategoria").removeAttr("disabled");
 
-      $(document).on('click', '#salvaCategoria', function(e){
-        var descricao = $('#DescricaoEditaCategoria').val()
-        $.ajax({
-          url : "/UpdateCategoriaEspecifica",
-          data: {idCategoria: id,
-                 Descricao: descricao},
-          type : 'post',
-          success: function (response) {
-            $('#DescricaoEditaCategoria').val('')
-            $("#deletaCategoria").attr("disabled", "disabled");
-            $("#DescricaoEditaCategoria").attr("disabled", "disabled");
-            $("#salvaCategoria").attr("disabled", "disabled");
-            listaCadastro()
-            $("#msg-text").text("Categoria cadastrada 🖥️");
-            $(".toast").toast("show");
-            setTimeout(() => {
-              $("#msg-text").text("");
-            }, 3000);
-          }
-        })
-      })
+      
 
-      $(document).on('click', '#btn-DeletaCategoria', function(e){
-        $.ajax({
-          url : "/DeletaCategoriaEspecifica",
-          data: {idCategoria: id},
-          type : 'post',
-          success: function (response) {
-            $('#DescricaoEditaCategoria').val('')
-            $("#deletaCategoria").attr("disabled", "disabled");
-            $("#DescricaoEditaCategoria").attr("disabled", "disabled");
-            $("#salvaCategoria").attr("disabled", "disabled");
-            listaCadastro()
-            $("#msg-text").text("Categoria deletada 🖥️");
-            $(".toast").toast("show");
-            setTimeout(() => {
-              $("#msg-text").text("");
-            }, 3000);
-          }
-        })
-      })
+      
       $(document).on('click', '#btn-DeletarCancela', function(e){
             $('#DescricaoEditaCategoria').val('')
             $("#deletaCategoria").attr("disabled", "disabled");
@@ -731,6 +693,28 @@ function EditaCategoria(id){
     }
   })
 }
+
+$(document).on('click', '#salvaCategoria', function(e){
+  var descricao = $('#DescricaoEditaCategoria').val()
+  $.ajax({
+    url : "/UpdateCategoriaEspecifica",
+    data: {idCategoria: id,
+           Descricao: descricao},
+    type : 'post',
+    success: function (response) {
+      $('#DescricaoEditaCategoria').val('')
+      $("#deletaCategoria").attr("disabled", "disabled");
+      $("#DescricaoEditaCategoria").attr("disabled", "disabled");
+      $("#salvaCategoria").attr("disabled", "disabled");
+      listaCadastro()
+      $("#msg-text").text("Categoria cadastrada 🖥️");
+      $(".toast").toast("show");
+      setTimeout(() => {
+        $("#msg-text").text("");
+      }, 3000);
+    }
+  })
+})
 
 function EditaUsuario(id){
   $.ajax({

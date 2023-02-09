@@ -56,11 +56,25 @@ body {
   height: 100vh;
 }
 
-.form-login input {
-  background-color: #ffffffb4;
-  border-radius: 15px;
-  border: none;
-  padding: 1.5vh;
+*::-webkit-scrollbar {
+  width: 9px;               /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: #e8f2fa;        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #b3c8d7;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 1px solid #b3c8d7;  /* creates padding around scroll thumb */;
+}
+
+input, textarea, select {
+  background-color: #eef2f8 !important;
+  border-radius: 15px !important;
+  border: none !important;
+  padding: 1.5vh !important;
 }
 
 .navbar{
