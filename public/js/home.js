@@ -602,6 +602,7 @@ $(document).on('click', '#InsereCategoria', function(e){
 })
 
 $(document).on('click', '#InsereColaborador', function(e){
+  e.preventDefault();
   var admin = 0
   if($('#AdminNewColab').prop("checked")) {
     admin = 1
