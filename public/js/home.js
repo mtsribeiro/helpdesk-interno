@@ -122,11 +122,11 @@ async function dashboard() {
     type : 'post',
     data: {Situacao: 0},
     beforeSend: function(data) {
+      $('#tks-backlog').html('')
       $(".loading-backlog").show();
     },
     success: function (response) {
       $(".loading-backlog").hide();
-      $('#tks-backlog').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -157,11 +157,11 @@ async function dashboard() {
     data: {Situacao: 0,
            id: id},
     beforeSend: function(data) {
+      $('#mytks-backlog').html('')
       $(".myloading-backlog").show();
     },
     success: function (response) {
       $(".myloading-backlog").hide();
-      $('#mytks-backlog').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -191,11 +191,11 @@ async function dashboard() {
     type : 'post',
     data: {Situacao: 4},
     beforeSend: function(data) {
+      $('#tks-Arquivado').html('')
       $(".loading-arquivado").show();
     },
     success: function (response) {
       $(".loading-arquivado").hide();
-      $('#tks-Arquivado').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -226,11 +226,11 @@ async function dashboard() {
     data: {Situacao: 4,
            id: id},
     beforeSend: function(data) {
+      $('#mytks-Arquivado').html('')
       $(".myloading-arquivado").show();
     },
     success: function (response) {
       $(".myloading-arquivado").hide();
-      $('#mytks-Arquivado').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -260,11 +260,11 @@ async function dashboard() {
     type : 'post',
     data: {Situacao: 1},
     beforeSend: function(data) {
+      $('#tks-dev').html('')
       $(".loading-dev").show();
     },
     success: function (response) {
       $(".loading-dev").hide();
-      $('#tks-dev').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -295,11 +295,11 @@ async function dashboard() {
     data: {Situacao: 1,
            id: id},
     beforeSend: function(data) {
+      $('#mytks-dev').html('')
       $(".myloading-dev").show();
     },
     success: function (response) {
-    $(".myloading-dev").hide();
-      $('#mytks-dev').html('')
+    $(".myloading-dev").hide();  
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -329,11 +329,11 @@ async function dashboard() {
     type : 'post',
     data: {Situacao: 2},
     beforeSend: function(data) {
+      $('#tks-teste').html('')
       $(".loading-teste").show();
     },
     success: function (response) {
       $(".loading-teste").hide();
-      $('#tks-teste').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -364,11 +364,11 @@ async function dashboard() {
     data: {Situacao: 2,
            id: id},
     beforeSend: function(data) {
+      $('#mytks-teste').html('')
       $(".myloading-teste").show();
     },
     success: function (response) {
       $(".myloading-teste").hide();
-      $('#mytks-teste').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -398,11 +398,11 @@ async function dashboard() {
     type : 'post',
     data: {Situacao: 3},
     beforeSend: function(data) {
+      $('#tks-finalizado').html('')
       $(".loading-finalizado").show();
     },
     success: function (response) {
       $(".loading-finalizado").hide();
-      $('#tks-finalizado').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -433,11 +433,11 @@ async function dashboard() {
     data: {Situacao: 3,
            id: id},
     beforeSend: function(data) {
+      $('#mytks-finalizado').html('')
       $(".myloading-finalizado").show();
     },
     success: function (response) {
       $(".myloading-finalizado").hide();
-      $('#mytks-finalizado').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -467,11 +467,11 @@ async function dashboard() {
     type : 'post',
     data: {id: id},
     beforeSend: function(data) {
+      $('#tks-aprovacao').html('')
       $(".loading-aprovacao").show();
     },
     success: function (response) {
       $(".loading-aprovacao").hide();
-      $('#tks-aprovacao').html('')
       response.forEach(element => {
         if(element.Sprint == 0){
           var sprint = 'Sprint a definir'
@@ -514,7 +514,13 @@ function OpenTicket(id) {
     url : "/SelecionaTicket",
     type : 'post',
     data: {id: id},
+    beforeSend: function (data) {
+      $('#form-myticket').hide()
+      $('.ticketloading-backlog').show()
+    },
     success: function (response) {
+      $('#form-myticket').show()
+      $('.ticketloading-backlog').hide()
         $('#idTicketSelecionado').val(response[0].idTicket)
         $('#CategoriaTicketSelecionado').val(response[0].Categoria)
         $('#UrgenciaTicketSelecionado').val(response[0].Urgencia)
@@ -901,6 +907,7 @@ function BtnAprovaTicket(id){
     data: {id: id},
     type : 'post',
     success: function (response) {
+      $('#tks-aprovacao').html('')
       dashboard()
       $("#msg-text").text("Ticket aprovado 🖥️");
       $(".toast").toast("show");
