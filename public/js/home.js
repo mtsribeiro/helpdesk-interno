@@ -675,27 +675,26 @@ function EditaCategoria(id){
     data: {idCategoria: id},
     type : 'post',
     success: function (response) {
+      $('#DescricaoIdCategoria').val(id)
       $('#DescricaoEditaCategoria').val(response[0].Descricao)
       $("#deletaCategoria").removeAttr("disabled");
       $("#DescricaoEditaCategoria").removeAttr("disabled");
       $("#salvaCategoria").removeAttr("disabled");
-
-      
-
-      
-      $(document).on('click', '#btn-DeletarCancela', function(e){
-            $('#DescricaoEditaCategoria').val('')
-            $("#deletaCategoria").attr("disabled", "disabled");
-            $("#DescricaoEditaCategoria").attr("disabled", "disabled");
-            $("#salvaCategoria").attr("disabled", "disabled");
-            listaCadastro()
-      })
     }
   })
 }
 
+$(document).on('click', '#btn-DeletarCancela', function(e){
+  $('#DescricaoEditaCategoria').val('')
+  $("#deletaCategoria").attr("disabled", "disabled");
+  $("#DescricaoEditaCategoria").attr("disabled", "disabled");
+  $("#salvaCategoria").attr("disabled", "disabled");
+  listaCadastro()
+})
+
 $(document).on('click', '#salvaCategoria', function(e){
   var descricao = $('#DescricaoEditaCategoria').val()
+  var id = $('#DescricaoIdCategoria').val()
   $.ajax({
     url : "/UpdateCategoriaEspecifica",
     data: {idCategoria: id,
@@ -716,12 +715,34 @@ $(document).on('click', '#salvaCategoria', function(e){
   })
 })
 
+$(document).on('click', '#btn-DeletaCategoria', function(e){
+  var id = $('#DescricaoIdCategoria').val()
+  $.ajax({
+    url : "/DeletaCategoriaEspecifica",
+    data: {id: id},
+    type : 'post',
+    success: function (response) {
+      $('#DescricaoEditaCategoria').val('')
+      $("#deletaCategoria").attr("disabled", "disabled");
+      $("#DescricaoEditaCategoria").attr("disabled", "disabled");
+      $("#salvaCategoria").attr("disabled", "disabled");
+      listaCadastro()
+      $("#msg-text").text("Categoria deletada 🖥️");
+      $(".toast").toast("show");
+      setTimeout(() => {
+        $("#msg-text").text("");
+      }, 3000);
+    }
+  })
+})
+
 function EditaUsuario(id){
   $.ajax({
     url : "/ListaUsuarioEspecifico",
     data: {id: id},
     type : 'post',
     success: function (response) {
+      $('#IdEditacolab').val(response[0].Idusuario)
       $('#NomeEditacolab').val(response[0].nome)
       $('#SobrenomeEditacolab').val(response[0].sobrenome)
       $('#EmailEditacolab').val(response[0].email)
@@ -745,111 +766,113 @@ function EditaUsuario(id){
       $("#AdminEditacolab").removeAttr("disabled");
       $("#AtivoEditacolab").removeAttr("disabled");
       $("#salvaUsuario").removeAttr("disabled");
-
-      $(document).on('click', '#salvaUsuario', function(e){
-        e.preventDefault();
-        var nome = $('#NomeEditacolab').val()
-        var sobrenome = $('#SobrenomeEditacolab').val()
-        var email = $('#EmailEditacolab').val()
-        var senha = $('#SenhaEditacolab').val()
-        var admin = 0
-        if($('#AdminEditacolab').prop("checked")) {
-          admin = 1
-        }
-        var ativo = 0
-        if($('#AtivoEditacolab').prop("checked")) {
-          ativo = 1
-        }
-        $.ajax({
-          url : "/UpdateUsuarioEspecifica",
-          data: {Idusuario: id,
-                 nome: nome,
-                 sobrenome: sobrenome,
-                 email: email,
-                 senha: senha,
-                 admin: admin,
-                 ativo: ativo},
-          type : 'post',
-          success: function (response) {
-            $('#NomeEditacolab').val('')
-            $('#SobrenomeEditacolab').val('')
-            $('#EmailEditacolab').val('')
-            $('#SenhaEditacolab').val('')
-            $("#AdminEditacolab").removeAttr("checked");
-            $("#AtivoEditacolab").removeAttr("checked");
-
-            $("#deletaUsuario").attr("disabled", "disabled");
-            $("#NomeEditacolab").attr("disabled", "disabled");
-            $("#SobrenomeEditacolab").attr("disabled", "disabled");
-            $("#EmailEditacolab").attr("disabled", "disabled");
-            $("#SenhaEditacolab").attr("disabled", "disabled");
-            $("#AdminEditacolab").attr("disabled", "disabled");
-            $("#AtivoEditacolab").attr("disabled", "disabled");
-            $("#salvaUsuario").attr("disabled", "disabled");
-            listaCadastro()
-
-            $("#msg-text").text("Usuário alterado 🖥️");
-            $(".toast").toast("show");
-            setTimeout(() => {
-              $("#msg-text").text("");
-            }, 3000);
-          }
-        })
-      })
-
-      $(document).on('click', '#btn-DeletaUsuario', function(e){
-        $.ajax({
-          url : "/DeletaUsuarioEspecifico",
-          data: {id: id},
-          type : 'post',
-          success: function (response) {
-            $('#NomeEditacolab').val('')
-            $('#SobrenomeEditacolab').val('')
-            $('#EmailEditacolab').val('')
-            $('#SenhaEditacolab').val('')
-            $("#AdminEditacolab").removeAttr("checked");
-            $("#AtivoEditacolab").removeAttr("checked");
-
-            $("#deletaUsuario").attr("disabled", "disabled");
-            $("#NomeEditacolab").attr("disabled", "disabled");
-            $("#SobrenomeEditacolab").attr("disabled", "disabled");
-            $("#EmailEditacolab").attr("disabled", "disabled");
-            $("#SenhaEditacolab").attr("disabled", "disabled");
-            $("#AdminEditacolab").attr("disabled", "disabled");
-            $("#AtivoEditacolab").attr("disabled", "disabled");
-            $("#salvaUsuario").attr("disabled", "disabled");
-            listaCadastro()
-
-            $("#msg-text").text("Usuário deletado 🖥️");
-            $(".toast").toast("show");
-            setTimeout(() => {
-              $("#msg-text").text("");
-            }, 3000);
-          }
-        })
-      })
-      $(document).on('click', '#btn-DeletarCancela', function(e){
-            $('#NomeEditacolab').val('')
-            $('#SobrenomeEditacolab').val('')
-            $('#EmailEditacolab').val('')
-            $('#SenhaEditacolab').val('')
-            $("#AdminEditacolab").removeAttr("checked");
-            $("#AtivoEditacolab").removeAttr("checked");
-
-            $("#deletaUsuario").attr("disabled", "disabled");
-            $("#NomeEditacolab").attr("disabled", "disabled");
-            $("#SobrenomeEditacolab").attr("disabled", "disabled");
-            $("#EmailEditacolab").attr("disabled", "disabled");
-            $("#SenhaEditacolab").attr("disabled", "disabled");
-            $("#AdminEditacolab").attr("disabled", "disabled");
-            $("#AtivoEditacolab").attr("disabled", "disabled");
-            $("#salvaUsuario").attr("disabled", "disabled");
-            listaCadastro()
-      })
-
     }
   })
 }
+
+$(document).on('click', '#btn-DeletarCancela', function(e){
+  $('#NomeEditacolab').val('')
+  $('#SobrenomeEditacolab').val('')
+  $('#EmailEditacolab').val('')
+  $('#SenhaEditacolab').val('')
+  $("#AdminEditacolab").removeAttr("checked");
+  $("#AtivoEditacolab").removeAttr("checked");
+
+  $("#deletaUsuario").attr("disabled", "disabled");
+  $("#NomeEditacolab").attr("disabled", "disabled");
+  $("#SobrenomeEditacolab").attr("disabled", "disabled");
+  $("#EmailEditacolab").attr("disabled", "disabled");
+  $("#SenhaEditacolab").attr("disabled", "disabled");
+  $("#AdminEditacolab").attr("disabled", "disabled");
+  $("#AtivoEditacolab").attr("disabled", "disabled");
+  $("#salvaUsuario").attr("disabled", "disabled");
+  listaCadastro()
+})
+
+$(document).on('click', '#btn-DeletaUsuario', function(e){
+  var id = $('#IdEditacolab').val()
+  $.ajax({
+    url : "/DeletaUsuarioEspecifico",
+    data: {id: id},
+    type : 'post',
+    success: function (response) {
+      $('#NomeEditacolab').val('')
+      $('#SobrenomeEditacolab').val('')
+      $('#EmailEditacolab').val('')
+      $('#SenhaEditacolab').val('')
+      $("#AdminEditacolab").removeAttr("checked");
+      $("#AtivoEditacolab").removeAttr("checked");
+
+      $("#deletaUsuario").attr("disabled", "disabled");
+      $("#NomeEditacolab").attr("disabled", "disabled");
+      $("#SobrenomeEditacolab").attr("disabled", "disabled");
+      $("#EmailEditacolab").attr("disabled", "disabled");
+      $("#SenhaEditacolab").attr("disabled", "disabled");
+      $("#AdminEditacolab").attr("disabled", "disabled");
+      $("#AtivoEditacolab").attr("disabled", "disabled");
+      $("#salvaUsuario").attr("disabled", "disabled");
+      listaCadastro()
+
+      $("#msg-text").text("Usuário deletado 🖥️");
+      $(".toast").toast("show");
+      setTimeout(() => {
+        $("#msg-text").text("");
+      }, 3000);
+    }
+  })
+})
+
+$(document).on('click', '#salvaUsuario', function(e){
+  e.preventDefault();
+  var id = $('#IdEditacolab').val()
+  var nome = $('#NomeEditacolab').val()
+  var sobrenome = $('#SobrenomeEditacolab').val()
+  var email = $('#EmailEditacolab').val()
+  var senha = $('#SenhaEditacolab').val()
+  var admin = 0
+  if($('#AdminEditacolab').prop("checked")) {
+    admin = 1
+  }
+  var ativo = 0
+  if($('#AtivoEditacolab').prop("checked")) {
+    ativo = 1
+  }
+  $.ajax({
+    url : "/UpdateUsuarioEspecifica",
+    data: {Idusuario: id,
+           nome: nome,
+           sobrenome: sobrenome,
+           email: email,
+           senha: senha,
+           admin: admin,
+           ativo: ativo},
+    type : 'post',
+    success: function (response) {
+      $('#NomeEditacolab').val('')
+      $('#SobrenomeEditacolab').val('')
+      $('#EmailEditacolab').val('')
+      $('#SenhaEditacolab').val('')
+      $("#AdminEditacolab").removeAttr("checked");
+      $("#AtivoEditacolab").removeAttr("checked");
+
+      $("#deletaUsuario").attr("disabled", "disabled");
+      $("#NomeEditacolab").attr("disabled", "disabled");
+      $("#SobrenomeEditacolab").attr("disabled", "disabled");
+      $("#EmailEditacolab").attr("disabled", "disabled");
+      $("#SenhaEditacolab").attr("disabled", "disabled");
+      $("#AdminEditacolab").attr("disabled", "disabled");
+      $("#AtivoEditacolab").attr("disabled", "disabled");
+      $("#salvaUsuario").attr("disabled", "disabled");
+      listaCadastro()
+
+      $("#msg-text").text("Usuário alterado 🖥️");
+      $(".toast").toast("show");
+      setTimeout(() => {
+        $("#msg-text").text("");
+      }, 3000);
+    }
+  })
+})
 
 function BtnEnviaCancelamento(id){
   $(document).on('click', '#UpdateStatusCancelado', function(e){

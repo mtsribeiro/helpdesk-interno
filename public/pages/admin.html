@@ -89,6 +89,7 @@
                 <div class="col-6">
                   <label for="exampleInputEmail1">Nome</label>
                   <input type="text" class="form-control" id="NomeEditacolab" placeholder="Nome..." disabled>
+                  <input type="text" class="form-control" id="IdEditacolab" placeholder="Nome..." disabled style="display: none;">
                 </div>
                 <div class="col-6">
                   <label for="exampleInputEmail1">Sobrenome</label>
@@ -136,6 +137,7 @@
               </div>
               <label for="exampleInputEmail1">Descrição</label>
               <input type="text" class="form-control" id="DescricaoEditaCategoria" placeholder="Descrição..." disabled>
+              <input type="text" class="form-control" id="DescricaoIdCategoria" placeholder="Descrição..." style="display: none;">
               <button class="btn btn-primary mt-3 w-100" id="salvaCategoria" disabled>Salvar</button>
             </div>
           </div>
@@ -331,7 +333,7 @@
                     <label class="form-check-label" for="AdminNewColab">Administrador</label>
                   </div>
                 </fieldset>
-                <button class="btn btn-success w-100 mt-3" data-bs-dismiss="modal" id="InsereColaborador">Salvar 🚀</button>
+                <button class="btn btn-primary w-100 mt-3" data-bs-dismiss="modal" id="InsereColaborador">Salvar</button>
               </form>
             </div>
             <div class="tab-pane fade" id="Categoria" role="tabpanel">
@@ -342,7 +344,7 @@
                     <input type="text" class="form-control" id="DescricaoForm" aria-describedby="emailHelp" placeholder="Descrição...">
                   </div>
                 </fieldset>
-                <button class="btn btn-success w-100 mt-3" data-bs-dismiss="modal" id="InsereCategoria">Salvar 🚀</button>
+                <button class="btn btn-Primary w-100 mt-3" data-bs-dismiss="modal" id="InsereCategoria">Salvar</button>
               </form>
             </div>
           </div>

@@ -239,7 +239,7 @@ const requisicoes = async (app, upload) => {
   app.post("/DeletaCategoriaEspecifica", async function (req, res) {
     let conn = await getConnection();
     const resultado = await conn.query(
-      `DELETE FROM cad_categoria where IdCategoria = ${req.body.idCategoria}`
+      `DELETE FROM cad_categoria where IdCategoria = ${req.body.id}`
     );
     
     res.send(resultado);
