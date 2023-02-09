@@ -22,6 +22,7 @@ const requisicoes = async (app, upload) => {
       `Select * from cad_usuario where email = '${email}' and senha = '${senha}' and ativo = 1`
     );
     res.send(resultado);
+    conn.end();
   });
 
   app.post("/BuscaCategoria", async function (req, res) {
@@ -31,7 +32,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/InsereTicket", async function (req, res) {
@@ -41,7 +42,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DashboardBackEnd", async function (req, res) {
@@ -51,7 +52,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/myDashboardBackEnd", async function (req, res) {
@@ -61,7 +62,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DashboardDev", async function (req, res) {
@@ -71,7 +72,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/myDashboardDev", async function (req, res) {
@@ -81,7 +82,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DashboardTeste", async function (req, res) {
@@ -91,7 +92,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/myDashboardTeste", async function (req, res) {
@@ -101,7 +102,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DashboardFinalizado", async function (req, res) {
@@ -112,7 +113,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/myDashboardFinalizado", async function (req, res) {
@@ -123,7 +124,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DashboardArquivado", async function (req, res) {
@@ -133,7 +134,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/myDashboardArquivado", async function (req, res) {
@@ -143,7 +144,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/InsereCategoria", async function (req, res) {
@@ -153,7 +154,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/InsereUsuario", async function (req, res) {
@@ -163,7 +164,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/SelecionaTicket", async function (req, res) {
@@ -173,7 +174,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/updateSia", async function (req, res) {
@@ -182,6 +183,7 @@ const requisicoes = async (app, upload) => {
       `UPDATE mov_Ticket SET Categoria = ${req.body.Categoria}, Urgencia = ${req.body.Urgencia}, Assunto = '${req.body.Assunto}', Descricao = '${req.body.Descricao}', Sprint = ${req.body.Sprint}, Solucao = '${req.body.Solucao}', Situacao = ${req.body.Situacao}, motivoCancelamento = '${req.body.motivoCancelamento}' WHERE idTicket = ${req.body.idTicket}`
     );
     res.send(resultado);
+    conn.end();
   });
 
   app.post("/ListaUsuarios", async function (req, res) {
@@ -191,7 +193,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/ListaCategorias", async function (req, res) {
@@ -201,7 +203,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/ListaCategoriaEspecifica", async function (req, res) {
@@ -211,7 +213,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/UpdateCategoriaEspecifica", async function (req, res) {
@@ -221,7 +223,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/UpdateUsuarioEspecifica", async function (req, res) {
@@ -231,7 +233,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DeletaCategoriaEspecifica", async function (req, res) {
@@ -241,7 +243,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/ListaUsuarioEspecifico", async function (req, res) {
@@ -251,7 +253,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DeletaUsuarioEspecifico", async function (req, res) {
@@ -261,7 +263,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/DashboardAprovacao", async function (req, res) {
@@ -271,7 +273,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
-    
+    conn.end();
   });
 
   app.post("/UpdateTicketCancelado", async function (req, res) {
@@ -281,6 +283,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
+    conn.end();
   });
 
   app.post("/UpdateTicketAprovado", async function (req, res) {
@@ -290,6 +293,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
+    conn.end();
   })
   
   app.post('/enviarArquivos', upload.array("files", 10), async function (req, res) {
@@ -300,6 +304,7 @@ const requisicoes = async (app, upload) => {
     });
     
     res.send('Enviado com sucesso');
+    conn.end();
   });
 
   app.post("/PegaUltimoTicket", async function (req, res) {
@@ -309,6 +314,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
+    conn.end();
   });
 
   app.post("/UpdateArquivosTicket", async function (req, res) {
@@ -318,6 +324,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
+    conn.end();
   });
 
   app.post("/selecionaArquivosTicket", async function (req, res) {
@@ -327,6 +334,7 @@ const requisicoes = async (app, upload) => {
     );
     
     res.send(resultado);
+    conn.end();
   });
   
 }
