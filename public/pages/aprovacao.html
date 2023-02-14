@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../assets/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/animate.min.css">
-<link rel="stylesheet" href="../css/button.css">
 <link rel="stylesheet" href="../fonts/montserrat.css">
 <body>
   <nav class="navbar sticky-top navbar-expand-lg bg-light">
@@ -49,126 +48,6 @@
   </nav>
 
   <section class="vh-100 gradient-custom" id="aprovacao-dashboard"></section>
-
-  <div class="modal fade" id="OpenNewTicket" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="OpenNewTicketLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Abertura ticket</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <fieldset>
-              <div class="row mb-2">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">Categoria</label>
-                    <select class="form-select" id="CategoriaTicket">
-                    </select>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">Urgência</label>
-                    <select class="form-select" id="UrgenciaTicket">
-                      <option value="1" style="color: #000">Alta</option>
-                      <option value="2" style="color: #000">Média</option>
-                      <option value="3" style="color: #000">Baixa</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Assunto</label>
-                    <input type="email" class="form-control" id="AssuntoTicket" aria-describedby="emailHelp" placeholder="Assunto...">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleTextarea">Descrição</label>
-                    <textarea class="form-control" id="DescricaoTicket" rows="3" placeholder="Escreva aqui..."></textarea>
-                  </div>
-                </div>
-              </div>
-             
-            </fieldset>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="AbreTicket" class="btn btn-success w-100" data-bs-dismiss="modal">Enviar 🚀</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="OpenTicket" tabindex="-1" aria-labelledby="OpenTicketLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="TicketRef"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <fieldset>
-              <div class="row mb-2">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">Categoria</label>
-                    <input type="text" class="form-control" id="CategoriaTicketSelecionado" disabled>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">Urgência</label>
-                    <input type="text" class="form-control" id="UrgenciaTicketSelecionado" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Assunto</label>
-                    <input type="text" class="form-control" id="AssuntoTicketSelecionado" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Sprint</label>
-                    <input type="text" class="form-control" id="SprintTicketSelecionado" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleTextarea">Descrição</label>
-                    <textarea class="form-control" id="DescricaoTicketSelecionado" rows="3" disabled></textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="exampleTextarea">Solução</label>
-                    <textarea class="form-control" id="SolucaoTicketSelecionado" rows="3" disabled></textarea>
-                  </div>
-                </div>
-              </div>
-             
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
@@ -182,6 +61,31 @@
     </div>
   </div>
 
+  <div class="modal fade" id="OpenMotivoCancelamento" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Motivo cancelamento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="exampleTextarea">Motivo cancelamento</label>
+                  <textarea class="form-control" id="MotivoCancelamentoDesc" rows="3" placeholder="Escreva aqui..."></textarea>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="UpdateStatusCancelado" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 <script src="../assets/bootstrap.bundle.min.js"></script>
