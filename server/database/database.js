@@ -2,9 +2,9 @@ const mysql = require("promise-mysql");
 
 const connection = mysql.createConnection({
   host: "assinatura.rstransitarios.com.br",
-  user: "helpdesk",
+  user: "mateus",
   port: "3306",
-  password: "J7Gdk513GtFZ3E3a",
+  password: "21uZtxOj8HWhf1T4",
   database: "helpdesk",
   charset: "utf8mb4",
 });
@@ -12,9 +12,9 @@ const connection = mysql.createConnection({
 async function getConnection() {
   let conn = await mysql.createConnection({
   host: "assinatura.rstransitarios.com.br",
-  user: "helpdesk",
+  user: "mateus",
   port: "3306",
-  password: "J7Gdk513GtFZ3E3a",
+  password: "21uZtxOj8HWhf1T4",
   database: "helpdesk",
   charset: "utf8mb4",
   });
