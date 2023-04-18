@@ -50,6 +50,8 @@ $(document).on('click', '#AbreTicket', function (e) {
   var descricao = $('#DescricaoTicket').val()
   var idUsuario = $('#idUserlogado').val()
 
+  console.log(categoria, urgencia, assunto, descricao);
+
   if (!categoria || !urgencia || !assunto || !descricao) {
         $('#AnexosTicket').val('')
         $("#msg-text").text("Necessário preencher todas as informações 🖥️");
